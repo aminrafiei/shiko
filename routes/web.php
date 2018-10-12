@@ -15,13 +15,16 @@ use Illuminate\Contracts\Auth\Guard;
 
 App::setLocale('fa');
 
-//for testing
-Route::get('/', 'PagesController@index')->name('index');
-Route::get('/cart', 'CartsController@showCart')->name('show.cart');
-
 Auth::routes();
+Route::get('/', 'PagesController@index')->name('index');
 Route::get('/home', 'HomeController@index')->name('home');
-//Route::post('/post', 'PostController@add')->name('post.submit');
+
+Route::group(['prefix' => 'cart'], function () {
+    Route::get('/', 'CartsController@showCart')->name('show.cart');
+    Route::get('/confirm', 'CartsController@showCartConfirm')->name('show.cart.confirm');
+    Route::post('/confirm', 'OrdersController@confirm')->name('order.confirm');
+});
+
 
 Route::group(['prefix' => 'admin'], function () {
     Route::namespace('Admin')->group(function () {
@@ -48,9 +51,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/comments-publish', 'CommentsController@publishComment')->name('publish.comment');
     Route::get('/comments-details/{id}', 'CommentsController@showCommentDetail')->name('comment.details');
     Route::post('/comments-details', 'CommentsController@publishCommentProduct')->name('publish.comment.details');
-    Route::get('/show-store','ProductsController@showStore')->name('show.store');
-    Route::get('/show-store-details/{id}','ProductsController@showStoreDetails')->name('show.store.details');
-    Route::post('/store-update/{id}','ProductsController@storeUpdate')->name('store.update');
+    Route::get('/show-store', 'ProductsController@showStore')->name('show.store');
+    Route::get('/show-store-details/{id}', 'ProductsController@showStoreDetails')->name('show.store.details');
+    Route::post('/store-update/{id}', 'ProductsController@storeUpdate')->name('store.update');
 
 
 });
@@ -70,16 +73,17 @@ Route::group(['prefix' => 'product'], function () {
     });
 });
 
+Route::group(['prefix' => 'profile'], function () {
+
+    Route::get('/', 'ProfileController@show')->name('show.profile');
+});
+
 Route::get('/amir', function () {
 
     return view('layouts/Product_media');
 });
 
-Route::get('/mahsa',function (){
-
-    return view('layouts/userprofile');
-});
-Route::get('/facture',function (){
+Route::get('/facture', function () {
 
     return view('layouts/facture');
 });

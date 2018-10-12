@@ -11,6 +11,11 @@
 
 @section('content')
 
+    @auth()
+        <a class="alert-link" href="{{route('show.profile')}}">Profile</a>
+        <a class="alert-link"
+           href={{route('show.cart')}}>Cart: {{Session::has('cart') ? Session::get('cart')->totalQuantity : " nothing"}}</a>
+    @endauth
     <!-- Main -->
     <form action="" method="POST" class="search-form"> <!--set the action and method attribute for search form-->
         <fieldset class="search-form__fieldset">
@@ -49,15 +54,17 @@
             <h1 class="special-offers__title">{{__('messages.offers')}}</h1>
 
             <div class="row">
-            @foreach($products as $product)
+                @foreach($products as $product)
 
                     <div class="col-md-4">
 
                         <div class="card my-5">
                             @if($product->image == null)
-                                <img class="card-img-top" src="{{asset('images/main-banner-01-tn.jpg')}}" class="special-offers__image">
+                                <img class="card-img-top" src="{{asset('images/main-banner-01-tn.jpg')}}"
+                                     class="special-offers__image">
                             @else
-                                <img class="card-img-top" src="{{asset('images/'.$product->image)}}" class="special-offers__image">
+                                <img class="card-img-top" src="{{asset('images/'.$product->image)}}"
+                                     class="special-offers__image">
                             @endif
 
                             <div class="card-body">
@@ -68,14 +75,15 @@
                                 <br>
                                 <p><span class="text-success">Price:</span> {{$product->price}}</p>
 
-                                <a class="btn btn-primary" href={{route('show.products.details',['id'=>$product->id])}}>{{__('messages.show_more')}}</a>
+                                <a class="btn btn-primary"
+                                   href={{route('show.products.details',['id'=>$product->id])}}>{{__('messages.show_more')}}</a>
                             </div>
                         </div>
 
                     </div>
 
 
-            @endforeach
+                @endforeach
             </div>
             <div class="row">
                 <div class="col">
@@ -104,7 +112,6 @@
                 $('ul.pagination').addClass('justify-content-center');
 
             })
-
 
 
         </script>

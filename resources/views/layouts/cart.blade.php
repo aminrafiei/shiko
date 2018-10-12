@@ -9,6 +9,7 @@
         @if($cart->totalQuantity > 0)
             <div class="counting-product">
                 <table>
+                    {{uniqid()}}
                     <tr>
                         <td>تخفیف</td>
                         <td>10000000</td>
@@ -21,11 +22,9 @@
                 <hr>
                 <strong style="display: block">مبلغ قابل پرداخت:</strong>
                 <strong>{{$cart->totalPrice}}</strong>
-                <form action="" method="" role="form">
-
-                    <input type="submit" name="" value="ادامه ثبت سفارش"
-                           style="border: 1px solid #56ccc4;background-color: #56ccc4;color: white;font-size: 20px">
-                </form>
+                <br>
+                <a href="{{route('show.cart.confirm')}}"><input type="submit" name="" value="ادامه ثبت سفارش"
+                                                                style="border: 1px solid #56ccc4;background-color: #56ccc4;color: white;font-size: 20px"></a>
             </div>
 
             <!-- for every product -->
@@ -51,8 +50,7 @@
                                     <label for="number">تعداد محصول</label><br>
                                     <!-- must be changed -->
                                     <a href={{route('increase.qty',['id' => $item['item']->id + $item['size']])}}>+</a> {{$item['qty']}}
-                                    <a
-                                            href={{route('decrease.qty',['id' => $item['item']->id + $item['size']])}}>-</a>
+                                    <a href={{route('decrease.qty',['id' => $item['item']->id + $item['size']])}}>-</a>
                                 </div>
                             </div>
 

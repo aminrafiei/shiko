@@ -57,6 +57,8 @@ class ProductsController extends Controller
         return back()->with('status', 'update successfully');
     }
 
+
+
     public function showStore()
     {
         $products = Product::all();
@@ -65,6 +67,7 @@ class ProductsController extends Controller
 
     public function showProductsDetails($id)
     {
+
         $product = Product::with(['size', 'color'])->findOrFail($id);//->with(['comment','picture']);
         return view('layouts.product', compact('product'));
     }

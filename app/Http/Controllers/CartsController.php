@@ -25,6 +25,14 @@ class CartsController extends Controller
         return view('layouts.cart', compact('cart'));
     }
 
+    public function showCartConfirm()
+    {
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+
+        return view('layouts.factor', compact('cart'));
+    }
+
     public function addToCart(Request $request, $id)
     {
         $product = Product::with('size')->find($id);
