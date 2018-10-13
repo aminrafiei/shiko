@@ -11,20 +11,7 @@
 
 @section('content')
 
-    <!-- Main -->
-    <form action="" method="POST" class="search-form"> <!--set the action and method attribute for search form-->
-        <fieldset class="search-form__fieldset">
-            <legend class="search-form__title--hidden">search</legend>
-            <div class="search-form__content">
-                <input type="search" placeholder="کالای مورد نظر خود رو جست و جو کنید" class="search-form__input"
-                       required>
-                <button type="submit" class="search-form__button">
-                    <i class="icon-search"></i>
-                </button>
-            </div>
-        </fieldset>
-    </form>
-    <div class="advantages">
+    <!--div class="advantages">
         <ul class="advantages__list">
             <li class="advantages__item">
                 <i class="icon-credit-card-alt advantages__icon"></i>
@@ -43,7 +30,32 @@
                 <p class="advantages__caption">{{__('messages.advantages_item4')}}</p>
             </li>
         </ul>
+    </div-->
+
+    <div id="amazingslider-wrapper-1" style="display:block;position:relative;max-width:1300px;margin:0 auto 44px;">
+        <div id="amazingslider-1" style="display:block;position:relative;margin:0 auto;">
+            <ul class="amazingslider-slides" style="display:none;">
+                @foreach($sliBars as $slibar)
+                    <li>
+                        <a href="{{route('show.products.details',['id'=> $slibar->product_id])}}">
+                            <img src="{{asset('images/'.$slibar->image)}}" alt="main-banner-01"/>
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
+            <ul class="amazingslider-thumbnails" style="display:none;">
+                @foreach($sliBars as $slibar)
+                    <li>
+                        <a href="{{route('show.products.details',['id'=> $slibar->product_id])}}">
+                            <img src="{{asset('images/'.$slibar->image)}}" alt="main-banner-01"/>
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
     </div>
+
+
     <div class="main-container">
         <div class="special-offers">
             <h1 class="special-offers__title">{{__('messages.offers')}}</h1>

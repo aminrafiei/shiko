@@ -1,0 +1,88 @@
+@font-face {
+    font-family: yekan;
+    src: url('../yekan-font/Yekan.eot');
+    src: url('../yekan-font/Yekan.eot?#iefix') format('FontName-opentype'),
+    url('../yekan-font/Yekan.woff') format('woff'),
+    url('../yekan-font/Yekan.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: yekan;
+}
+body{
+    padding: 0;
+    margin: 0;
+}
+/************header************/
+.navbar{
+    direction: rtl;
+    background: #19D1D1;
+    padding: 0;
+}
+.navbar-collapse{
+
+}
+.navbar-nav{
+    width: auto;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+.nav-item{
+    text-align: center;
+}
+.nav-item:hover{
+    height: 100%;
+    background-color: #19c0c0;
+}
+.nav-link{
+    display: inline-block;
+    width: 100px;
+    height: 100%;
+    text-align: center;
+    padding: 15px 20px;
+    color: black;
+}
+nav .navbar-nav li a{
+    color: white !important;
+}
+
+.form-inline{
+    float: left;
+}
+/*********footer************/
+.page-footer{
+    direction: rtl;
+    background-color: #435175;
+    color: #fff;
+}
+.page-footer__top-row{
+    direction: rtl;
+}
+.page-footer__products , .page-footer__help , .page-footer__contact{
+    text-align: right;
+}
+.page-footer__details{
+    text-align: justify;
+}
+.page-footer__link{
+    color: #fff;
+}
+.page-footer__link:hover{
+    color: #fff;
+}
+.page-footer__item--ltr{
+    direction: ltr;
+}
+.page-footer__item--inline-block{
+    display: inline-block;
+}
+.page-footer__bottom-row{
+    min-height: 60px;
+    border-top: solid 1px #19c0c0;
+}
+.page-footer__copy-right{
+    text-align: right;
+}
