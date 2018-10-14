@@ -1,13 +1,8 @@
 ﻿@extends('main.layouts.app')
 
-{{--
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<link href="{{asset('icomoon/style.css')}}" rel="stylesheet">
-<script src="{{asset('sliderengine/jquery.js')}}"></script>
-<script src="{{asset('sliderengine/amazingslider.js')}}"></script>
-<link rel="stylesheet" type="text/css" href="{{asset('sliderengine/amazingslider-1.css')}}">
-<script src="{{asset('sliderengine/initslider-1.js')}}"></script>
---}}
+
+
+
 
 @section('content')
 
@@ -39,7 +34,7 @@
         </ul>
     </div-->
 
-    <!--div id="amazingslider-wrapper-1" style="display:block;position:relative;max-width:1300px;margin:0 auto 44px;">
+    <div id="amazingslider-wrapper-1" style="display:block;position:relative;max-width:1300px;margin:50px auto 44px;">
         <div id="amazingslider-1" style="display:block;position:relative;margin:0 auto;">
             <ul class="amazingslider-slides" style="display:none;">
                 @foreach($sliBars as $slibar)
@@ -60,7 +55,7 @@
                 @endforeach
             </ul>
         </div>
-    </div-->
+    </div>
 
 
     <div class="main-container">
@@ -74,11 +69,9 @@
 
                         <div class="card my-5">
                             @if($product->image == null)
-                                <img class="card-img-top" src="{{asset('images/main-banner-01-tn.jpg')}}"
-                                     class="special-offers__image">
+                                <img class="card-img-top" src="{{asset('images/main-banner-01-tn.jpg')}}">
                             @else
-                                <img class="card-img-top" src="{{asset('images/'.$product->image)}}"
-                                     class="special-offers__image">
+                                <img class="card-img-top" src="{{asset('images/'.$product->image)}}">
                             @endif
 
                             <div class="card-body">
@@ -123,8 +116,12 @@
 
             })
 
-
         </script>
+        <script src="{{asset('sliderengine/jquery.js')}}"></script>
+        <script src="{{asset('sliderengine/amazingslider.js')}}"></script>
+        <link rel="stylesheet" type="text/css" href="{{asset('sliderengine/amazingslider-1.css')}}">
+        <script src="{{asset('sliderengine/initslider-1.js')}}"></script>
+
     @endpush
 
 

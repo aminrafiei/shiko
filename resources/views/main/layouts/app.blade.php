@@ -5,7 +5,6 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
     <link href="{{asset('icomoon/style.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/bootstrap4.css') }}">
     <link href="{{ asset('css/new-style.css') }}" rel="stylesheet" type="text/css">
@@ -14,46 +13,67 @@
 
 </head>
 <body>
-
-<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" id="1" href="#">{{__('messages.main_page')}} <span class="sr-only">(current)</span></a>
-            </li>
-
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {{__('messages.products')}}
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">دسته بندی1</a>
-                    <a class="dropdown-item" href="#">دسته بندی2</a>
-                    <a class="dropdown-item" href="#">دسته بندی3</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">{{__('messages.contact_us')}}</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">{{__('messages.about_us')}}</a>
-            </li>
-        </ul>
-
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+<header>
+    <div class="header-tape">
+        <a class="header-tape__link header-tape__link--login" href="#">
+            <i class="fas fa-sign-in-alt header-tape__icon"></i> {{ __('messages.login_or_register') }}
+        </a>
+        <a class="header-tape__link header-tape__link--user" href="#">
+            <i class="fas fa-user header-tape__icon"></i> نام کاربر
+        </a>
+        <a class="header-tape__link header-tape__link--cart" href="#">
+            <i class="fas fa-shopping-cart header-tape__icon"></i>سبد خرید
+        </a>
     </div>
-</nav>
+    <nav class="navbar navbar-expand-lg sticky-top" style="margin-bottom: 50px">
 
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" id="1" href="#">{{__('messages.main_page')}} <span
+                                class="sr-only">(current)</span></a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        {{__('messages.products')}}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">دسته بندی1</a>
+                        <a class="dropdown-item" href="#">دسته بندی2</a>
+                        <a class="dropdown-item" href="#">دسته بندی3</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">{{__('messages.contact_us')}}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">{{__('messages.about_us')}}</a>
+                </li>
+            </ul>
+            <div class="col-lg-8" style="float: left;text-align: left;direction: ltr;position: absolute;left: 0">
+                <form class="form-inline my-2 my-lg-0 col-xs-10 col-sm-pull-2 search-form">
+                    <input class="form-control mr-sm-2 col-lg-5 search-form__input" style="text-align: right"
+                           type="search"
+                           placeholder="{{ __('messages.search') }}" aria-label="Search">
+                    <button class="btn my-2 my-sm-0 search-form__button" type="submit"><i class="fas fa-search"></i>
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </nav>
+</header>
 <div class="container">
-@yield('content')
+    @yield('content')
 </div>
 
 <!-- Footer -->
@@ -138,34 +158,36 @@
             <div class="col-md-7 col-lg-8 page-footer__copy-right">
 
                 <!--Copyright-->
-                <p style="display: inline-block" class="text-right text-md-left page-footer__item page-footer__item--inline-block">© 1397 کپی رایت: تمام حقوق محفوظ است</p>
+                <p style="display: inline-block"
+                   class="text-right text-md-left page-footer__item page-footer__item--inline-block">© 1397 کپی رایت:
+                    تمام حقوق محفوظ است</p>
 
             </div>
             <!-- Grid column -->
 
             <!-- Grid column -->
-            <div class="col-md-5 col-lg-4 ml-lg-0">
+            <div class="col-md-5 col-lg-4  col-xs-12 ml-lg-0">
 
                 <!-- Social buttons -->
-                <div class="text-center text-md-right page-footer__social-media">
-                    <ul class="list-unstyled list-inline">
-                        <li class="list-inline-item">
-                            <a class="btn-floating btn-sm rgba-white-slight mx-1 page-footer__link" href="#">
+                <div class="text-center text-md-right page-footer__social-media social-media">
+                    <ul class="list-unstyled list-inline social-media__list">
+                        <li class="list-inline-item social-media__item">
+                            <a class="social-media__link" href="#">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
                         </li>
-                        <li class="list-inline-item">
-                            <a class="btn-floating btn-sm rgba-white-slight mx-1 page-footer__link" href="#">
+                        <li class="list-inline-item social-media__item">
+                            <a class="social-media__link" href="#">
                                 <i class="fab fa-twitter"></i>
                             </a>
                         </li>
-                        <li class="list-inline-item">
-                            <a class="btn-floating btn-sm rgba-white-slight mx-1 page-footer__link" href="#">
+                        <li class="list-inline-item social-media__item">
+                            <a class="social-media__link" href="#">
                                 <i class="fab fa-google-plus-g"></i>
                             </a>
                         </li>
-                        <li class="list-inline-item">
-                            <a class="btn-floating btn-sm rgba-white-slight mx-1 page-footer__link" href="#">
+                        <li class="list-inline-item social-media__item">
+                            <a class="social-media__link" href="#">
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
                         </li>
