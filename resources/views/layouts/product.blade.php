@@ -1,43 +1,47 @@
-@extends('layouts.index')
-<script src="{{asset('jquery-3.2.1.js')}}"></script>
-<script src="{{asset('js/bootstrap.js')}}"></script>
-<link rel="stylesheet" href="{{asset('css/bootstrap.css')}}"/>
-<link href="{{asset('icomoon/style.css')}}" rel="stylesheet">
+@extends('main.layouts.app')
+
+
 @section('content')
 
-    <div class="container-fluid">
 
-        <div class="images col-xs-12 col-md-6 col-md-push-6">
-            <img src="{{asset('images/'.$product->image)}}" class="main-image" alt="picture!">
-            @foreach($product->picture as $picture)
-                <img src="{{asset('images/'.$picture->picture)}}" class="sub-image" alt="picture!">
-            @endforeach
-        </div>
-        <div class="product-details-container col-xs-12 col-md-6 col-md-pull-6">
-            <div class="product-details">
-                <div class="product-title">
-                    <h1>{{$product->title}}</h1>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-6">
+                    <img src="{{asset('images/'.$product->image)}}" class="img-thumbnail " alt="picture!">
+                <div class="row">
+                    @foreach($product->picture as $picture)
+                        <div class="col-4 col-sm-6m-12">
+                            <img src="{{asset('images/'.$picture->picture)}}" class="img-thumbnail" alt="picture!">
+                        </div>
+                    @endforeach
                 </div>
-                <div class="product-price">
-                    <strong>{{$product->price}}</strong>
-                </div>
-
-
+            </div>
+            <div class="col-6">
+                <h1 class="text-right">{{$product->title}}</h1>
+                <h4 class="text-right my-3">قیمت:{{$product->price}} ریال</h4>
+                @if($product->total_qty > 0)
+                    <h6 class="text-right">موجودی:درانبار</h6>
+                @else
+                    <h6 class="text-right">موجودی:تمام شده</h6>
+                @endif
+                <h6 class="text-right">تگ:بدون تگ</h6>
+                <h6 class="text-right">دسته بندی:<em>
+                        @foreach($product->category as $category)
+                            {{$category->name}},
+                        @endforeach
+                    </em></h6>
+                <p class="text-right">{!!$product->description!!}</p>
                 <form action="{{route('add.to.cart',['id' => $product->id])}}" method="post">
                     @csrf
-                    <div class="product-color">
-                        <div class="text">
-                            <span style="display: inline-block">رنگ:</span>
-                        </div>
-                    {{$product->color->color}}
-
+                    <div class="form-group text-right">
+                        <label for="color">رنگ</label>
+                        <label class="form-control">{{$product->color->color}}</label>
+                        <small class="form-text text-muted">رنگ های دیگر محصول رو میتوانید جست و جو کنید</small>
                     </div>
-                    <div class="product-size">
-                        <div class="text">
-                            <span style="display: inline-block">انتخاب سایز:</span>
-                        </div>
-
-                        <select name="size">
+                    <div class="form-group text-right">
+                        <label for="size">سایز</label>
+                        <select name="size" class="form-control">
                             @foreach($product->size as $size)
                                 @if($size->pivot->qty > 0)
                                     <option value="{{$size->id}}">{{$size->cloth_size}}{{$size->pants_size}}</option>
@@ -45,138 +49,69 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="group-images">
-                        <img src="" alt="">
-                        <img src="" alt="">
+                    <div class="text-right">
+                        <button type="button" class="btn btn-outline-info">اضافه به علاقه مندی</button>
+                        <button type="submit"
+                                class="btn btn-outline-success" {{$product->total_qty>0 ? null : "disabled"}}>{{$product->total_qty>0 ? "خرید میکنم" : "تمام شده"}}</button>
+
                     </div>
-                    @if($product->total_qty > 0)
-                        <div class="product-add">
-                            <button class="add-to-cart"><i
-                                        class="fas fa-shopping-cart"></i> افزودن به سبد خرید
-                            </button>
 
-                            <a href="#" class="add-to-fav"><i class="fas fa-heart"></i></a>
-
-                        </div>
-                    @else
-                        <h3>تمام شده</h3>
-                    @endif
                 </form>
-                <div class="product-advantages">
-
-                    <ul>
-                        <li>
-                            <i class="icon-credit-card-alt"></i>
-
-                        </li>
-                        <li>
-                            <i class="icon-dollar"></i>
-
-                        </li>
-                        <li>
-                            <i class="icon-grip-horizontal-solid"></i>
-
-                        </li>
-                        <li>
-                            <i class="icon-checkmark"></i>
-
-                        </li>
-                    </ul>
-
-                </div>
-                <div class="product-property">
-                    <strong>ویژگی های محصول:</strong>
-                    <ul>
-                        <li>
-                            <p>
-                                {!!$product->description!!}
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                {!!$product->description!!}
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                {!!$product->description!!}
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                {!!$product->description!!}
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-
-
             </div>
         </div>
-    </div>
-    <div class="product-hmmm">
-        <ul class="nav nav-tabs">
-            <li id="comments_btn" class="active"><a href="#information" onclick="show_comments()">نظرات کاربران</a></li>
-            <li id="information_btn"><a href="#comments" onclick="show_information()">مشخصات محصول</a></li>
-        </ul>
-        <div class="comments" id="comments">
-
-            @guest
-                <div class="container-form">
-                    <p>
-                        please <a href={{route('register')}}>sign-up</a> for submit your comment!
-                        or if you already have account , <a href={{route('login')}}>login</a> for more...
-                    </p>
-                </div>
-                @else
-                    <div class="container-form">
-                        <div class="jalebe" style="height: 550px">
-                            <form action={{route('new.comment',['id' => $product->id])}} method="post" role="form">
-                                @csrf
-                                <input type="text" name="title" placeholder="عنوان نظر" class="comment-title" required>
-                                <textarea type="text" name="description" placeholder="نظر خود را بنویسید..."
-                                          class="comment-text"
-                                          required></textarea>
-                                <input type="submit" class="comment-submit" value="ثبت نظر">
-
-                            </form>
-                        </div>
-                    </div>
-                    @endguest
-
-
-                    @foreach($product->comment as $comment)
-                        @if($comment->isShow == 1)
-                            <div class="user-comment">
-                                <p>{{$comment->title}}</p>
-                                <div class="comment-text">
-                                    <p>
-                                        {{$comment->description}}
-                                    </p>
+        <hr>
+        <div class="row text-right">
+            @foreach($product->comment as $comment)
+                @if($comment->isShow == 1)
+                    <div class="col-md-8 offset-md-4 my-3">
+                        <div class="panel panel-white post panel-shadow">
+                            <div class="post-heading">
+                                <div class="pull-right image">
+                                    <img src="{{asset('images/userimg.jpg')}}" class="img-circle avatar"
+                                         alt="user profile image">
+                                </div>
+                                <div class="pull-left meta">
+                                    <div class="title h4">
+                                        <a href="#"><b>{{$comment->user->name}}</b></a>
+                                    </div>
+                                    <h6 class="text-muted my-2">1 minute ago</h6>
                                 </div>
                             </div>
-                        @endif
-                    @endforeach
+                            <br>
+                            <div class="post-description">
+                                <h5>
+                                    {{$comment->title}}
+                                </h5>
+                                <p>{{$comment->description}}</p>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+            @endforeach
         </div>
 
-        <div class="information" id="information">
-            <table>
-                <tr>
-                    <td>جنس</td>
-                    <td class="second-col">کتان</td>
-                </tr>
-                <tr>
-                    <td>جنس</td>
-                    <td class="second-col">کتان</td>
-                </tr>
-                <tr>
-                    <td>جنس</td>
-                    <td class="second-col">کتان</td>
-                </tr>
+        @guest
+            <div class="container-form">
+                <p class="text-right">لطفا برای ثبت نظر خود <a href="{{route('login')}}">وارد</a> اکانت خود شوید و در صورت نداشتن حساب <a href="{{route('register')}}"> ثبت نام</a> کنید</p>
+            </div>
+            @else
+                <div class="panel-body">
+                    <form class="form-group text-right"
+                          action={{route('new.comment',['id' => $product->id])}} method="post" role="form">
+                        @csrf
+                        <label for="title">نظر خود را بنوسید</label>
+                        <input type="text" name="title" placeholder="عنوان نظر" class="form-control text-right"
+                               required>
+                        <textarea type="text" name="description" placeholder="نظر خود را بنویسید..."
+                                  class="form-control text-right"
+                                  required></textarea>
+                        <input type="submit" class="btn btn-outline-secondary mt-1" value="ثبت نظر">
 
-            </table>
-        </div>
+                    </form>
+                </div>
+                @endguest
     </div>
+
 
     <script>
         function show_information() {

@@ -1,17 +1,6 @@
 ﻿@extends('main.layouts.app')
 
-
-
-
-
 @section('content')
-
-
-    @auth()
-        <a class="alert-link" href="{{route('show.profile')}}">Profile</a>
-        <a class="alert-link"
-           href={{route('show.cart')}}>Cart: {{Session::has('cart') ? Session::get('cart')->totalQuantity : " nothing"}}</a>
-    @endauth
 
     <!--div class="advantages">
         <ul class="advantages__list">

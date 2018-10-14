@@ -23,7 +23,6 @@ class CreateProductsTable extends Migration
             $table->string('tag');
             $table->integer('total_qty')->default(0);
             $table->unsignedInteger('color_id');
-            //$table->unsignedInteger('category_id');
             $table->timestamps();
 
             $table->foreign('admin_id')

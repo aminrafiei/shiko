@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>sirco</title>
-
+    <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('fontawesome/css/all.css')}}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap4.css') }}">
     <!--script src="{{asset('jquery-3.2.1.js')}}"></script-->

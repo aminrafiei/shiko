@@ -15,15 +15,23 @@
 <body>
 <header>
     <div class="header-tape">
-        <a class="header-tape__link header-tape__link--login" href="#">
-            <i class="fas fa-sign-in-alt header-tape__icon"></i> {{ __('messages.login_or_register') }}
-        </a>
-        <a class="header-tape__link header-tape__link--user" href="#">
-            <i class="fas fa-user header-tape__icon"></i> نام کاربر
-        </a>
-        <a class="header-tape__link header-tape__link--cart" href="#">
-            <i class="fas fa-shopping-cart header-tape__icon"></i>سبد خرید
-        </a>
+
+        @auth()
+
+            <a class="header-tape__link header-tape__link--cart" href={{route('show.cart')}}>
+                <i class="fas fa-shopping-cart header-tape__icon"></i>سبد خرید: {{Session::has('cart') ? Session::get('cart')->totalQuantity : " خالی"}}
+            </a>
+
+            <a class="header-tape__link header-tape__link--login" href="{{route('show.profile')}}">
+                <i class="fas fa-user header-tape__icon"></i> سلام {{Auth::getUser()->name}}
+            </a>
+            @else
+                <a class="header-tape__link header-tape__link--login" href="{{route('login')}}">
+                    <i class="fas fa-sign-in-alt header-tape__icon"></i> {{ __('messages.login_or_register') }}
+                </a>
+
+                @endauth
+
     </div>
     <nav class="navbar navbar-expand-lg sticky-top" style="margin-bottom: 50px">
 
@@ -72,6 +80,12 @@
         </div>
     </nav>
 </header>
+@if (session('status'))
+    <div class="alert alert-success text-right" role="alert">
+        {{ session('status') }}
+    </div>
+@endif
+@include('layouts.error')
 <div class="container">
     @yield('content')
 </div>
