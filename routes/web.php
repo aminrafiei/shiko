@@ -82,8 +82,3 @@ Route::get('/amir', function () {
 
     return view('layouts/Product_media');
 });
-
-Route::get('/facture', function () {
-
-    return view('layouts/facture');
-});

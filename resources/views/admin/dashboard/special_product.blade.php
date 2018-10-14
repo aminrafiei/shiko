@@ -13,7 +13,7 @@
 					@foreach($sliBars as $slibar)
 						<a><input name = "checkbox[]" type = "checkbox" value = "{{$slibar->id}}"><img
 									src = "{{asset('images/'.$slibar->image)}}" alt = "asd" name = "asd"
-									class = "product-image">
+									class = "product-image img-add-cms">
 						</a>
 						<a href = "{{"edit-special-product/".$slibar->id}}">
 							<button type = "button" class = "btn btn-outline-info mr-sm-3">تغییر</button>

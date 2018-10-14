@@ -29,8 +29,8 @@
                     <input type="text" name="tag" placeholder="برچسب ها" value={{$product->tag}}>
 
                     <div>
-                        <img src={{asset('images/'.$product->image)}} id="blah" alt="image" name="image"
-                             class="product-image">
+                        <img src={{asset('images/'.$product->image)}} id="output" alt="image" name="image"
+                             class="product-image img-add-cms">
                         <label for="image">image</label>
                         <input id="img" type="file" name="image" onchange="readURL(this);" accept="image/*">
                     </div>
@@ -93,5 +93,12 @@
 
         <hr>
     </div>
+    <script>
+        var loadFile = function (event) {
+            var image = document.getElementById('output');
+            image.src = URL.createObjectURL(event.target.files[0]);
+        };
+
+    </script>
 @endsection
 

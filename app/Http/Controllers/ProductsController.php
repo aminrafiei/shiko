@@ -74,7 +74,7 @@ class ProductsController extends Controller
 
     public function adminShowProduct()
     {
-        $products = Product::with(['admin'])->where('price','>',4000000)->get();
+        $products = Product::paginate(10);
         return view('admin.dashboard.products', compact('products'));
     }
 
