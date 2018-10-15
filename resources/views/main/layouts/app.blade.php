@@ -25,38 +25,39 @@
             <i class="fas fa-shopping-cart header-tape__icon"></i>سبد خرید
         </a>
     </div>
-    <nav class="navbar navbar-expand-lg sticky-top" style="margin-bottom: 50px">
+</header>
+    <nav class="navbar navbar-expand-lg sticky-top main-nav">
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        <button class="navbar-toggler main-nav__toggle-btn" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fas fa-bars"></i>
+            <i class="fas fa-bars main-nav__icon"></i>
         </button>
 
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" id="1" href="#">{{__('messages.main_page')}} <span
+            <ul class="navbar-nav main-nav__list">
+                <li class="nav-item main-nav__item">
+                    <a class="nav-link main-nav__link" id="1" href="#">{{__('messages.main_page')}} <span
                                 class="sr-only">(current)</span></a>
                 </li>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                <li class="nav-item dropdown main-nav__item">
+                    <a class="nav-link dropdown-toggle main-nav__link" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
                         {{__('messages.products')}}
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">دسته بندی1</a>
-                        <a class="dropdown-item" href="#">دسته بندی2</a>
-                        <a class="dropdown-item" href="#">دسته بندی3</a>
+                    <div class="dropdown-menu main-dropdown" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item main-dropdown__item" href="#">دسته بندی1</a>
+                        <a class="dropdown-item main-dropdown__item" href="#">دسته بندی2</a>
+                        <a class="dropdown-item main-dropdown__item" href="#">دسته بندی3</a>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">{{__('messages.contact_us')}}</a>
+                <li class="nav-item main-nav__item">
+                    <a class="nav-link main-nav__link" href="#">{{__('messages.contact_us')}}</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">{{__('messages.about_us')}}</a>
+                <li class="nav-item main-nav__item">
+                    <a class="nav-link main-nav__link" href="#">{{__('messages.about_us')}}</a>
                 </li>
             </ul>
             <div class="col-lg-8" style="float: left;text-align: left;direction: ltr;position: absolute;left: 0">
@@ -71,7 +72,7 @@
 
         </div>
     </nav>
-</header>
+
 <div class="container">
     @yield('content')
 </div>
