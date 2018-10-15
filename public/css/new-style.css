@@ -61,7 +61,6 @@ body {
 .header-tape__link--cart {
     left: 20px;
 }
-
 .dropdown-menu {
     background-color: #4093a5;
 }
@@ -69,49 +68,43 @@ body {
 .dropdown-item:hover {
     background-color: #4093a5;
 }
+.main-nav {
 
-.navbar {
     direction: rtl;
     background: #48a4b8;
     padding: 0;
     box-shadow: 0 3px 10px 0 grey;
 }
 
-.collapse {
-
-}
-
-.navbar-toggler {
+.main-nav__toggle-btn {
     font-size: 25px;
     border: solid 1px white;
     margin: 5px;
 }
 
-.navbar-toggler i {
+.main-nav__icon {
     color: white;
 }
 
-.navbar-nav {
+.main-nav__list {
     width: auto;
-
     margin: 0;
     padding: 0;
 }
 
-.nav-item {
+.main-nav__item {
     text-align: center;
 }
 
-.nav-item:hover {
+.main-nav__item:hover {
     background-color: #4093a5;
 }
 
-.nav-link {
+.main-nav__link {
+    padding: 15px 20px;
     display: inline-block;
     width: 100px;
-
     text-align: center;
-    padding: 15px 20px;
 }
 
 nav .navbar-nav li a {
@@ -132,6 +125,19 @@ nav .navbar-nav li a {
     background-color: #4093a5;
     color: white;
     border: solid 1px white;
+}
+
+.main-dropdown {
+    background-color: #4093a5;
+}
+
+.main-dropdown__item {
+    padding: 10px 0;
+    text-align: center;
+}
+
+.main-dropdown__item:hover {
+    background-color: #4093a5;
 }
 
 /*********footer************/
@@ -183,9 +189,8 @@ nav .navbar-nav li a {
 }
 
 .social-media__list {
-    margin: 0;
+    margin: 0 0 20px 0;
     padding: 0;
-    margin-bottom: 20px;
     text-align: center;
 }
 
@@ -216,7 +221,6 @@ nav .navbar-nav li a {
     color: #48a4b8;
     text-align: center;
 }
-
 /*Amin*/
 .img-size {
 
@@ -350,3 +354,69 @@ nav .navbar-nav li a {
 .post .post-footer .comments-list .comment > .comments-list {
     margin-left: 50px;
 }
+/*******dashboard***********/
+.cms {
+    direction: rtl;
+}
+
+.cms-nav {
+    direction: rtl;
+}
+.cms-nav__link{
+    display: inline-block;
+    width: 80px;
+    border: solid 1px #265863;
+    text-align: center;
+}
+.cms-nav__link:hover{
+    background-color: #265863;
+}
+.cms-nav__company-name{
+    text-align: center;
+    background-color: #265863;
+}
+.cms-sidebar {
+    height: 100vh;
+    text-align: right;
+    background: linear-gradient(to top, #265863, #48a4b8) !important;
+    position: fixed;
+    z-index: 10;
+    padding: 0;
+}
+.cms-sidebar__list{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.cms-sidebar__item{
+    text-align: right;
+}
+.cms-sidebar__item:hover , .cms-sidebar__item--dropdown.active{
+    background-color: white;
+    box-shadow: 0 0 10px 0 grey;
+}
+.cms-sidebar__item:hover .cms-sidebar__link , .cms-sidebar__item--dropdown.active .cms-sidebar__link{
+    color: #265863;
+}
+.cms-sidebar__link{
+    padding: 15px 10px;
+    color: white;
+}
+.cms-sidebar__icon{
+    font-size: 20px;
+    margin-left:5px ;
+}
+.cms-sidebar__dropdown{
+    display: none;
+    width: 100%;
+}
+.show{
+    display: block;
+}
+@media screen and (max-width: 769px){
+    .cms-sidebar{
+        position: static;
+        height: auto;
+    }
+}
+
