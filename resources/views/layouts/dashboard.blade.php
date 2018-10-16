@@ -146,6 +146,16 @@
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
 
                 <!-- content here -->
+                @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                @endif
+                @if (session('warning'))
+                    <div class="alert alert-danger" role="alert">
+                        {{ session('warning') }}
+                    </div>
+                @endif
                 @include('layouts.error')
                 @yield('cms_content')
             </main>

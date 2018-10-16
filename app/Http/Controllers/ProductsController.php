@@ -58,7 +58,6 @@ class ProductsController extends Controller
     }
 
 
-
     public function showStore()
     {
         $products = Product::all();
@@ -94,7 +93,7 @@ class ProductsController extends Controller
 
         $validated = $request->validated();
         $product = Product::find($id);
-        $product->update($request->only('title', 'price', 'tag', 'description','color_id'));
+        $product->update($request->only('title', 'price', 'tag', 'description', 'color_id'));
         $product->color_id = $request->color_id;
         $product->save();
 
@@ -171,31 +170,39 @@ class ProductsController extends Controller
         $product->tag = $request->tag;
         $product->color_id = $request->color_id;
 
+
         if ($request->hasFile('image')) {
+
             $img = $request->file('image');
             $filename = time() . "." . $img->getClientOriginalExtension();
             $location = public_path("images/" . $filename);
+
             Image::make($img)->resize(800, 400)->save($location);
             $product->image = $filename;
         }
+
         $product->save();
+        sleep(1);
         if ($request->hasFile('images')) {
-            $i = 0;
+            $i = 1;
             foreach ($request->images as $image) {
+
                 global $i;
+
                 $filename = (time() + $i) . "." . $image->getClientOriginalExtension();
                 $location = public_path("images/" . $filename);
                 Image::make($image)->resize(800, 400)->save($location);
                 $i++;
+
                 Picture::create([
                     'product_id' => $product->id,
                     'picture' => $filename
                 ]);
+
             }
         }
-        //$product = Auth::user()->products()->create($request->except('_token'));
+
         $product->size()->attach($request->get('size_id'));
-        //$product->color()->attach($request->get('color_id'));
         $product->category()->attach($request->get('category_id'));
         return redirect()->route('admin.dashboard')->with('status', 'successfully created!');
     }

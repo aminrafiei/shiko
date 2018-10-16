@@ -14,7 +14,7 @@
 		return [
 			//'category_id'=>factory(Category::class)->create()->id,
 			'admin_id' => 1,
-			'category_id' => $cat ->id,
+			//'category_id' => $cat->id,
 			//'category_id' => $cat ->id,
 			'color_id' => $color -> id,
 			'image' => null,

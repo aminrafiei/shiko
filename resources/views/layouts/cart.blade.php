@@ -26,7 +26,7 @@
                         @foreach($cart->items as $item)
                             <tr>
                                 <td>
-                                    <img class="product-image" src="{{asset('images/'.$item['item']->image)}}">
+                                    <img class="product-image" src="{{asset('images/'.$item['item']->image)}}" style="width: 125px;height: 100px">
                                 </td>
                                 <td>
                                     <a href={{route('show.products.details',['id' => $item['item']->id])}}>
