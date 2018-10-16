@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('content2')
+@section('cms_content')
 
     <div class="container-fluid">
         <div class="text-right">

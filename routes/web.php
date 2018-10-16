@@ -44,7 +44,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/edit-special-product/{id}', 'SpecialProductsController@showSpecialProductID')->name('special.product.id');
     Route::post('/edit-special-product/{id}', 'SpecialProductsController@editSpecialProduct')->name('edit.special.product');
     Route::post('/remove-product', 'ProductsController@removeProduct')->name('remove.product');
-    Route::post('/remove-special-product', 'SpecialProductsController@removeSpecialProduct')->name('remove.special.product');
+    Route::get('/remove-special-product/{id}', 'SpecialProductsController@removeSpecialProduct')->name('remove.special.product');
     Route::get('/special-product', 'SpecialProductsController@specialProduct')->name('special.product');
     Route::post('/special-product', 'SpecialProductsController@specialProductSubmit')->name('special.product.submit');
     Route::get('/comments', 'CommentsController@showComments')->name('show.comments');

@@ -1,132 +1,104 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="{{asset('fontawesome/css/all.css')}}">
-</head>
-<body>
+@extends('main.layouts.app')
 
-<div class="main-container">
-    <div class="map">
-        <div class="map__item">
-            <div class="map__icon map__icon--circle">
-                <i class="fas fa-shopping-cart"></i>
+@section('content')
+
+    <div class="container my-5">
+        @if($cart->totalQuantity > 0)
+            <div class="row">
+
+                <div class="col-6">
+                    <div class="card text-center">
+                        <div class="card-header">
+                            <span>بازبینی سفارش</span>
+                        </div>
+                        <div class="card-body">
+                            @foreach($cart->items as $item)
+                                <div class="row my-2">
+                                    <div class="col-6">
+                                        <img class="product-image" src="{{asset('images/'.$item['item']->image)}}"
+                                             style="height: 100px;width: 100px">
+                                    </div>
+                                    <div class="col-6">
+                                        <h4><a href={{route('show.products.details',['id' => $item['item']->id])}}>
+                                                {{$item['item']->title}}</a></h4>
+                                        <small>{{$item['item']->tag}}</small>
+                                        <br>
+                                        <small>تعداد:{{$item['qty']}}</small>
+                                    </div>
+                                </div>
+                                <hr>
+                            @endforeach
+                        </div>
+                        <div class="card-footer text-muted">
+                            <a href="{{route('show.cart')}}">
+                                <button class="btn btn-outline-primary">برگشت به سبدخرید</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="card text-center">
+                        <div class="card-header">
+                            <span>اطلاعات گیرنده</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-text text-right">
+                                <h5>گیرنده: {{Auth::getUser()->name}} </h5>
+                                <p>آدرس: {{Auth::getUser()->address}}</p>
+                                <p>تلفن: {{Auth::getUser()->phone_number}}</p>
+                                <p>آدرس پستی: {{Auth::getUser()->postal_code}}</p>
+                            </div>
+                        </div>
+                        <div class="card-footer text-muted">
+                            <a href="{{route('show.profile')}}">
+                                <button class="btn btn-outline-info">تغییر اطلاعات</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <div class="map__text"><span>سبدخرید</span></div>
-        </div>
-        <div class="map__item">
-            <div class="map__icon map__icon--circle">
-                <i class="far fa-clipboard"></i>
+            <div class="row my-3">
+                <div class="col-12">
+                    <div class="card text-center">
+                        <div class="card-header">
+                            <span>تایید و پرداخت</span>
+                        </div>
+                        <form action="{{route('order.confirm')}}" method="post" role="form">
+                            @csrf
+                            <input type="hidden" name="order_id" value={{uniqid()}}>
+                            <input type="hidden" name="user_id" value={{Auth::getUser()->id}}>
+                            <input type="hidden" name="cart" value={{base64_encode(serialize($cart))}}>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div>
+                                            <label>پرداخت در محل </label>
+                                            <input type="radio" name="payment" value="offline" checked>
+                                        </div>
+                                        <div>
+                                            <label>پرداخت آنلاین</label>
+                                            <input type="radio" name="payment" value="online">
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <p>:قابل پرداخت
+                                        <p>
+                                        {{$cart->totalPrice}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer text-muted">
+                                <button class="btn btn-outline-success">ثبت سفارش</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="map__text"><span>سبدخرید</span></div>
-        </div>
-        <div class="map__item">
-            <div class="map__icon map__icon--circle">
-                <i class="fas fa-gift"></i>
-            </div>
-            <div class="map__text"><span>سبدخرید</span></div>
-        </div>
+        @else
+            <h3 class="text-center my-5">سبد خرید شما خالی است</h3>
+        @endif
     </div>
 
-    <div class="user-information">
-        <div class="user-information__title">نام و آدرس تحویل گیرنده</div>
-        <div class="user-information__content">
-            <table>
-                <tr>
-                    <td><strong>گیرنده:</strong></td>
-                    <td><span>{{Auth::getUser()->name}}</span></td>
-                </tr>
-                <tr>
-                    <td>شماره تماس:</td>
-                    <td>0900000000</td>
-                </tr>
-                <tr>
-                    <td>ایمیل:</td>
-                    <td>{{Auth::getUser()->email}}</td>
-                </tr>
-                <tr>
-                    <td>کد پستی:</td>
-                    <td>0000000000</td>
-                </tr>
-                <tr>
-                    <td>نشانی:</td>
-                    <td>تهران</td>
-                </tr>
-
-
-            </table>
-        </div>
-    </div>
-    @if($cart->totalQuantity > 0)
-        <div class="products-list">
-            <div class="products-list__title"><h1>لیست کالاهای انتخابی شما</h1></div>
-            @foreach($cart->items as $item)
-                <div class="products-list__item">
-                    <div class="products-list__name">
-                        <strong style=""><a href={{route('show.products.details',['id' => $item['item']->id])}}>
-                                {{$item['item']->title}}</a></strong>
-                        <img class="product-image" src="{{asset('images/'.$item['item']->image)}}">
-                    </div>
-                    <div class="products-list__number">
-                        <p><span> تعداد</span><span>{{$item['qty']}}</span><span> عدد</span></p>
-                    </div>
-                    <div class="products-list__price">
-                        <table>
-                            <tr>
-                                <td>قیمت:</td>
-                                <td>{{$item['price']}}</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            @endforeach
-            <div class="products-list__facture">
-                <div class="products-list__bill">
-                    <table>
-                        <tr>
-                            <td>تخفیف:</td>
-                            <td>0</td>
-                        </tr>
-                        <tr>
-                            <td>هزینه ارسال:</td>
-                            <td>10000</td>
-                        </tr>
-                        <tr>
-                            <td>مبلغ قابل پرداخت:</td>
-                            <td>{{$cart->totalPrice}}</td>
-                        </tr>
-                    </table>
-                </div>
-
-                <div class="products-list__pay">
-                    <form action="{{route('order.confirm')}}" method="post" role="form">
-                        @csrf
-                        <input type="hidden" name="order_id" value={{uniqid()}}>
-                        <input type="hidden" name="user_id" value={{Auth::getUser()->id}}>
-                        <input type="hidden" name="cart" value={{base64_encode(serialize($cart))}}>
-                        <div>
-                            <label for="place-pay">پرداخت در محل</label>
-                            <input type="radio" name="place_pay" id="place-pay">
-                        </div>
-                        <div>
-                            <label for="online-pay">پرداخت آنلاین</label>
-                            <input type="radio" name="online_pay" id="online-pay">
-                        </div>
-                        <button type="submit">تایید و پرداخت</button>
-                    </form>
-
-                </div>
-            </div>
-        </div>
-    @else
-        <strong>your cart is empty</strong>
-    @endif
-</div>
-
-</body>
-</html>
+@endsection

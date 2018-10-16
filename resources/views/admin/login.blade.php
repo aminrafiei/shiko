@@ -1,12 +1,12 @@
-@extends('layouts.app')
+@extends('main.layouts.app')
 
 @section('content')
 
-    <div class="alignment" style="text-align: center">
+    <div class="alignment mb-5" style="text-align: center">
         <div class="row justify-content-center">
             <div class="col-md-8" style="margin-top: 10%">
                 <div class="card">
-                    <div class="card-header">Admin Controller</div>
+                    <div class="card-header">Admin Login</div>
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('admin.login') }}" aria-label="{{ __('Login') }}">

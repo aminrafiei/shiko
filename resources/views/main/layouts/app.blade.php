@@ -45,7 +45,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav main-nav__list">
                 <li class="nav-item main-nav__item">
-                    <a class="nav-link main-nav__link" id="1" href="#">{{__('messages.main_page')}} <span
+                    <a class="nav-link main-nav__link" id="1" href={{route('index')}}>{{__('messages.main_page')}} <span
                                 class="sr-only">(current)</span></a>
                 </li>
 

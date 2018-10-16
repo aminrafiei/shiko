@@ -86,10 +86,10 @@
                                 </div>
                             </div>
                             <div class="card-footer bg-transparent border-success text-right">
-                                <a href="{{route('show.cart.confirm')}}">
+                                <a href="{{route('index')}}">
                                     <button class="btn btn-outline-secondary">برگشت</button>
                                 </a>
-                                <a href="{{route('index')}}">
+                                <a href="{{route('show.cart.confirm')}}">
                                     <button class="btn btn-outline-success">ادامه</button>
                                 </a>
 

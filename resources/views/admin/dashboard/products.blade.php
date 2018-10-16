@@ -1,13 +1,12 @@
 @extends('layouts.dashboard')
 
-@section('content2')
+@section('cms_content')
+
     <div class="wrapper-title">
-        <div class="content-title">
+        <div class="text-right">
             <h1>محصولات</h1>
         </div>
     </div>
-
-
 
     <script>
         function confirmFunction() {
@@ -18,11 +17,10 @@
     </script>
 
 
+    <div class="container border">
 
-    <div class="products-container">
 
-
-        <table class="steelBlueCols">
+        <table class="table table-striped">
             <thead>
             <tr>
                 <th>انتخاب</th>

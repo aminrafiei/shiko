@@ -1,19 +1,12 @@
 @extends('layouts.dashboard')
 
-@section('content2')
-    <div class="wrapper-title">
-        <div class="content-title">
-            <h1>نظرات</h1>
+@section('cms_content')
 
-        </div>
-    </div>
-
-    <p class="text-right">دسترسی سریع به کامنت ها. برای اطلاعت بیشتر روی تعداد کامنت ها کلیک کنید</p>
-
-    <div class="products-container">
-
+    <div class="container">
+        <h1 class="text-right"> نظرات</h1>
+        <p class="text-right"> برای اطلاعات بیشتر روی تعداد کامنت ها در صفحه مصولات کلیک کنید</p>
         <form method="POST" action="{{route('publish.comment')}}">
-        <table class="steelBlueCols">
+        <table class="table table-striped">
             <thead>
             <tr>
                 <th>انتخاب</th>
