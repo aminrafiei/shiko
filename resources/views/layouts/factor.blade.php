@@ -79,7 +79,7 @@
                                         </div>
                                         <div>
                                             <label>پرداخت آنلاین</label>
-                                            <input type="radio" name="payment" value="online">
+                                            <input type="radio" name="payment" value="online" disabled>
                                         </div>
                                     </div>
                                     <div class="col-6">

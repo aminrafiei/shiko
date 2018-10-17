@@ -20,9 +20,10 @@ class PagesController extends Controller
     public function index()
     {
         //$posts = Post::with(['admin'])->get();
-	    $sliBars=Slidebar::all();
-        $products = Product::paginate(20);
-        return view('main.index',compact('products','sliBars'));
+        $sliBars = Slidebar::all();
+        $products = Product::orderBy('created_at', 'desc')->paginate(4);
+
+        return view('main.index', compact('products', 'sliBars'));
     }
 
 }

@@ -51,7 +51,7 @@
                         <form class="container-fluid" action="#">
                             <p class="">کد تخفیف یا کد هدیه خود را وارد کنید</p>
                             <input class="form-control" type="text" name="discount">
-                            <input class="btn btn-outline-danger form-control my-2" type="submit" value="تایید">
+                            <input disabled class="btn btn-outline-danger form-control my-2" type="submit" value="تایید">
                         </form>
                     </div>
                 </div>

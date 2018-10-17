@@ -5,10 +5,15 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\Slidebar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SpecialProductsController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
 
     public function removeSpecialProduct($id)
     {
