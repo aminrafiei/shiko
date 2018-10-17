@@ -61,13 +61,6 @@ body {
 .header-tape__link--cart {
     left: 20px;
 }
-.dropdown-menu {
-    background-color: #4093a5;
-}
-
-.dropdown-item:hover {
-    background-color: #4093a5;
-}
 .main-nav {
 
     direction: rtl;
@@ -135,7 +128,6 @@ nav .navbar-nav li a {
     padding: 10px 0;
     text-align: center;
 }
-
 .main-dropdown__item:hover {
     background-color: #4093a5;
 }
@@ -378,7 +370,7 @@ nav .navbar-nav li a {
 .cms-sidebar {
     height: 100vh;
     text-align: right;
-    background: linear-gradient(to top, #265863, #48a4b8) !important;
+    background: linear-gradient(to bottom, #204755, #1c495a ) !important;
     position: fixed;
     z-index: 10;
     padding: 0;
@@ -390,28 +382,39 @@ nav .navbar-nav li a {
 }
 .cms-sidebar__item{
     text-align: right;
-}
-.cms-sidebar__item:hover , .cms-sidebar__item--dropdown.active{
-    background-color: white;
-    box-shadow: 0 0 10px 0 grey;
-}
-.cms-sidebar__item:hover .cms-sidebar__link , .cms-sidebar__item--dropdown.active .cms-sidebar__link{
-    color: #265863;
+    transition-duration: 0.4s;
 }
 .cms-sidebar__link{
-    padding: 15px 10px;
+    padding: 15px 30px;
     color: white;
-}
-.cms-sidebar__icon{
-    font-size: 20px;
-    margin-left:5px ;
+    box-sizing: border-box;
+    border-right: solid 5px #204755;
+    transition-duration: .3s;
 }
 .cms-sidebar__dropdown{
     display: none;
     width: 100%;
 }
+.cms-sidebar__icon{
+    font-size: 20px;
+}
+.cms-sidebar__item:hover , .cms-sidebar__item.active{
+    box-shadow: 0 0 10px -3px black inset;
+}
+.cms-sidebar__item:hover .cms-sidebar__link , .cms-sidebar__item.active .cms-sidebar__link{
+    color:  #65AAD3;
+    border-right: solid 5px #65AAD3;
+}
+
+.cms-sidebar__dropdown .cms-sidebar__link:hover{
+    background-color: #65AAD3 !important;
+    box-shadow: 0 0 10px -3px black inset;
+}
 .show{
     display: block;
+}
+.dashboard-main{
+    background-color: whitesmoke;
 }
 @media screen and (max-width: 769px){
     .cms-sidebar{
@@ -420,3 +423,8 @@ nav .navbar-nav li a {
     }
 }
 
+/******user profile*********/
+.block-item{
+    height: 100px;
+    border: solid 1px lightgray;
+}
