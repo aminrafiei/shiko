@@ -14,22 +14,37 @@ class OrdersController extends Controller
         $this->middleware('auth');
     }
 
-    public function confirm(Request $request)
+    public function cartFinish(Order $order)
     {
 
-        $order = Order::create($request->only('order_id', 'cart', 'user_id'));
-        if (Session::has('cart')) {
+        $cart = unserialize(base64_decode($order->cart));
+        return view('layouts.cart_finish', compact('order', 'cart'));
+    }
 
-            $cart = Session::get('cart');
-            foreach ($cart->items as $item) {
 
-                $pro = $item['item']->size->where('id', $item['size'])->first()->pivot;
-                $qty = $item['qty'];
-                $this->storeDeq($pro, $qty);
+    public function confirm(Request $request)
+    {
+        $oldcart = $request->only('cart');
+        $cart = unserialize(base64_decode($oldcart['cart']));
+
+        if ($cart->totalQuantity > 0) {
+dd($cart);
+            $order = Order::create($request->only('order_id', 'cart', 'user_id'));
+
+            if (Session::has('cart')) {
+
+                $cart = Session::get('cart');
+                foreach ($cart->items as $item) {
+
+                    $pro = $item['item']->size->where('id', $item['size'])->first()->pivot;
+                    $qty = $item['qty'];
+                    $this->storeDeq($pro, $qty);
+                }
             }
-        }
-        Session::has('cart') ? $request->session()->forget('cart') : null;
+            Session::has('cart') ? $request->session()->forget('cart') : null;
 
+            return $this->cartFinish($order);
+        }
     }
 
     public function storeDeq($pro, $qty)

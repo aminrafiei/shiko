@@ -19,7 +19,8 @@
         @auth()
 
             <a class="header-tape__link header-tape__link--cart" href={{route('show.cart')}}>
-                <i class="fas fa-shopping-cart header-tape__icon"></i>سبد خرید: {{Session::has('cart') ? Session::get('cart')->totalQuantity : " خالی"}}
+                <i class="fas fa-shopping-cart header-tape__icon"></i>سبد
+                خرید: {{Session::has('cart') ? Session::get('cart')->totalQuantity : " خالی"}}
             </a>
 
             <a class="header-tape__link header-tape__link--login" href="{{route('show.profile')}}">
@@ -34,52 +35,53 @@
 
     </div>
 </header>
-    <nav class="navbar navbar-expand-lg sticky-top main-nav">
+<nav class="navbar navbar-expand-lg sticky-top main-nav">
 
-        <button class="navbar-toggler main-nav__toggle-btn" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fas fa-bars main-nav__icon"></i>
-        </button>
+    <button class="navbar-toggler main-nav__toggle-btn" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars main-nav__icon"></i>
+    </button>
 
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav main-nav__list">
-                <li class="nav-item main-nav__item">
-                    <a class="nav-link main-nav__link" id="1" href={{route('index')}}>{{__('messages.main_page')}} <span
-                                class="sr-only">(current)</span></a>
-                </li>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav main-nav__list">
+            <li class="nav-item main-nav__item">
+                <a class="nav-link main-nav__link" id="1" href={{route('index')}}>{{__('messages.main_page')}} <span
+                            class="sr-only">(current)</span></a>
+            </li>
 
-                <li class="nav-item dropdown main-nav__item">
-                    <a class="nav-link dropdown-toggle main-nav__link" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">
-                        {{__('messages.products')}}
-                    </a>
-                    <div class="dropdown-menu main-dropdown" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item main-dropdown__item" href="#">دسته بندی1</a>
-                        <a class="dropdown-item main-dropdown__item" href="#">دسته بندی2</a>
-                        <a class="dropdown-item main-dropdown__item" href="#">دسته بندی3</a>
-                    </div>
-                </li>
-                <li class="nav-item main-nav__item">
-                    <a class="nav-link main-nav__link" href="#">{{__('messages.contact_us')}}</a>
-                </li>
-                <li class="nav-item main-nav__item">
-                    <a class="nav-link main-nav__link" href="#">{{__('messages.about_us')}}</a>
-                </li>
-            </ul>
-            <div class="col-lg-8" style="float: left;text-align: left;direction: ltr;position: absolute;left: 0">
-                <form class="form-inline my-2 my-lg-0 col-xs-10 col-sm-pull-2 search-form">
-                    <input class="form-control mr-sm-2 col-lg-5 search-form__input" style="text-align: right"
-                           type="search"
-                           placeholder="{{ __('messages.search') }}" aria-label="Search">
-                    <button class="btn my-2 my-sm-0 search-form__button" type="submit"><i class="fas fa-search"></i>
-                    </button>
-                </form>
-            </div>
-
+            <li class="nav-item dropdown main-nav__item">
+                <a class="nav-link dropdown-toggle main-nav__link" href="#" id="navbarDropdown" role="button"
+                   data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    {{__('messages.products')}}
+                </a>
+                <div class="dropdown-menu main-dropdown" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item main-dropdown__item" href="#">دسته بندی1</a>
+                    <a class="dropdown-item main-dropdown__item" href="#">دسته بندی2</a>
+                    <a class="dropdown-item main-dropdown__item" href="#">دسته بندی3</a>
+                </div>
+            </li>
+            <li class="nav-item main-nav__item">
+                <a class="nav-link main-nav__link" href="#">{{__('messages.contact_us')}}</a>
+            </li>
+            <li class="nav-item main-nav__item">
+                <a class="nav-link main-nav__link" href="#">{{__('messages.about_us')}}</a>
+            </li>
+        </ul>
+        <div class="col-lg-8" style="float: left;text-align: left;direction: ltr;position: absolute;left: 0">
+            <form class="form-inline my-2 my-lg-0 col-xs-10 col-sm-pull-2 search-form">
+                <input class="form-control mr-sm-2 col-lg-5 search-form__input" style="text-align: right"
+                       type="search"
+                       placeholder="{{ __('messages.search') }}" aria-label="Search">
+                <button class="btn my-2 my-sm-0 search-form__button" type="submit"><i class="fas fa-search"></i>
+                </button>
+            </form>
         </div>
-    </nav>
+
+    </div>
+</nav>
 
 
 @if (session('status'))
@@ -90,8 +92,7 @@
 @include('layouts.error')
 
 
-
-<div class="container">
+<div class="container" style="background-color: #f6f6f6">
     @yield('content')
 </div>
 
