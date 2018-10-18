@@ -76,6 +76,10 @@ Route::group(['prefix' => 'product'], function () {
 Route::group(['prefix' => 'profile'], function () {
 
     Route::get('/', 'ProfileController@show')->name('show.profile');
+    Route::get('/order/{id}', 'ProfileController@order')->name('show.profile.order');
+    Route::get('/info', 'ProfileController@showInfo')->name('show.profile.info');
+    Route::post('/info', 'ProfileController@submitInfo')->name('submit.profile.info');
+    Route::get('/fav', 'ProfileController@fav')->name('show.profile.fav');
 });
 
 Route::get('/amir', function () {

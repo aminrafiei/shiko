@@ -1,6 +1,6 @@
-@extends('')
+@extends('layouts.user_profile')
 
-@section('')
+@section('content2')
 
 
     <div class="row">

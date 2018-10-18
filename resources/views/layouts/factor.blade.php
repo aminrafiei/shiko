@@ -75,11 +75,11 @@
                                     <div class="col-6">
                                         <div>
                                             <label>پرداخت در محل </label>
-                                            <input type="radio" name="payment" value="offline" checked>
+                                            <input type="radio" name="peyment_type" value="offline" checked>
                                         </div>
                                         <div>
                                             <label>پرداخت آنلاین</label>
-                                            <input type="radio" name="payment" value="online" disabled>
+                                            <input type="radio" name="peyment_type" value="online" disabled>
                                         </div>
                                     </div>
                                     <div class="col-6">

@@ -18,6 +18,8 @@ class CreateOrdersTable extends Migration
             $table->string('order_id')->unique();
             $table->text('cart');
             $table->unsignedInteger('user_id');
+            $table->boolean('confirm')->default(0);
+            $table->string('peyment_type');
             $table->timestamps();
 
             $table->foreign('user_id')

@@ -28,8 +28,7 @@ class OrdersController extends Controller
         $cart = unserialize(base64_decode($oldcart['cart']));
 
         if ($cart->totalQuantity > 0) {
-dd($cart);
-            $order = Order::create($request->only('order_id', 'cart', 'user_id'));
+            $order = Order::create($request->only('order_id', 'cart', 'user_id','peyment_type'));
 
             if (Session::has('cart')) {
 

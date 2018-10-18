@@ -29,8 +29,11 @@
                                     <img class="product-image" src="{{asset('images/'.$item['item']->image)}}" style="width: 125px;height: 100px">
                                 </td>
                                 <td>
-                                    <a href={{route('show.products.details',['id' => $item['item']->id])}}>
-                                        {{$item['item']->title}}</a>
+                                    <p><a href={{route('show.products.details',['id' => $item['item']->id])}}>
+                                            {{$item['item']->title}}</a></p>
+                                    <small>رنگ:{{$item['item']->color->color}}</small><br>
+                                    <small>سایز: {{$item['item']->size->where('id',$item['size'])->first()->pants_size}}
+                                        {{$item['item']->size->where('id',$item['size'])->first()->cloth_size}}</small>
                                 </td>
                                 <td>{{$item['item']->price }}</td>
                                 <td>
