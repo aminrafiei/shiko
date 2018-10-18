@@ -44,7 +44,7 @@
     </div>
     <div class="row my-3 ">
         <div class="col-12">
-            <h5>آخرین سفارش ها</h5>
+            <h5>اطلاعات خرید</h5>
             <table class="table table-striped">
                 <thead>
                 <tr>

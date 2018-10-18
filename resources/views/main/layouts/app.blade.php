@@ -26,6 +26,12 @@
             <a class="header-tape__link header-tape__link--login" href="{{route('show.profile')}}">
                 <i class="fas fa-user header-tape__icon"></i> سلام {{Auth::getUser()->name}}
             </a>
+
+            <form action="{{route('logout')}}" method="post">
+                @csrf
+                <input type="submit" class="nav-link cms-nav__link" value="خروج">
+                {{--<a class="nav-link cms-nav__link submit" href="#">خروج</a>--}}
+            </form>
             @else
                 <a class="header-tape__link header-tape__link--login" href="{{route('login')}}">
                     <i class="fas fa-sign-in-alt header-tape__icon"></i> {{ __('messages.login_or_register') }}

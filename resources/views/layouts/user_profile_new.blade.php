@@ -53,7 +53,7 @@
                         </div>
                     </div>
 
-                    <a href={{route('show.profile.info')}} class="btn btn-primary mt-3">ویرایش اطلاعات شخصی</a>
+                    <a href="{{route('show.profile.info')}}" class="btn btn-primary mt-3">ویرایش اطلاعات شخصی</a>
                 </div>
             </div>
         </div>
@@ -61,7 +61,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">لیست آخرین علاقه مندی ها</h5>
-
+                    <p class="card-body">بدون اطلاعات</p>
                     {{--<div class="row">--}}
                         {{--<div class="col-12 block-item">--}}
                             {{--<div class="row" style="height: 100%">--}}

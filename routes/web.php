@@ -27,11 +27,12 @@ Route::group(['prefix' => 'cart'], function () {
 
 
 Route::group(['prefix' => 'admin'], function () {
+
     Route::namespace('Admin')->group(function () {
 
+        Route::post('/logout', 'AdminLoginController@logout')->name('admin.logout');
         Route::get('/login', 'AdminLoginController@loginForm')->name('admin.login.form');
         Route::post('/login', 'AdminLoginController@login')->name('admin.login');
-        Route::get('/logout', 'AdminLoginController@logout')->name('admin.logout');
         Route::get('/', 'AdminsController@dashboard')->name('admin.dashboard');
     });
 
@@ -54,6 +55,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/show-store', 'ProductsController@showStore')->name('show.store');
     Route::get('/show-store-details/{id}', 'ProductsController@showStoreDetails')->name('show.store.details');
     Route::post('/store-update/{id}', 'ProductsController@storeUpdate')->name('store.update');
+    Route::get('/show-orders','OrdersController@showAdminOrders')->name('show.admin.orders');
+    Route::get('/order/{id}','OrdersController@showAdminOrderDetail')->name('show.order.detail');
+    Route::post('/order','OrdersController@submitAdminOrderDetail')->name('submit.order.detail');
 
 
 });

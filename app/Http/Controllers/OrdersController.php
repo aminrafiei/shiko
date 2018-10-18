@@ -11,12 +11,35 @@ class OrdersController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('showAdminOrders','showAdminOrderDetail','submitAdminOrderDetail');
+        $this->middleware('auth:admin')->only('showAdminOrders','showAdminOrderDetail','submitAdminOrderDetail');
     }
+
+
+    public function showAdminOrders()
+    {
+        $orders = Order::with('user')->get();
+        return view('admin.dashboard.orders',compact('orders'));
+    }
+
+    public function showAdminOrderDetail($id)
+    {
+        $order = Order::findOrFail($id);
+        $cart = unserialize(base64_decode($order->cart));
+        return view('admin.dashboard.order_detail',compact('order','cart'));
+    }
+
+    public function submitAdminOrderDetail(Request $request)
+    {
+        $order = Order::findOrFail($request->order);
+        $order->confirm = $request->confirm;
+        $order->save();
+        return back()->with('status','با موفقیت انجام شد');
+    }
+
 
     public function cartFinish(Order $order)
     {
-
         $cart = unserialize(base64_decode($order->cart));
         return view('layouts.cart_finish', compact('order', 'cart'));
     }
