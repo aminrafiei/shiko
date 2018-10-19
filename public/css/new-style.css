@@ -16,6 +16,12 @@ body {
     padding: 0;
     margin: 0;
 }
+.rtl{
+    direction: rtl;
+}
+.ltr{
+    direction: ltr;
+}
 
 /************header************/
 .header-tape {
@@ -427,4 +433,26 @@ nav .navbar-nav li a {
 .block-item{
     height: 100px;
     border: solid 1px lightgray;
+}
+/*******all product*************/
+.category__title{
+    padding: 10px 10px;
+    border-bottom: solid 1px lightgray;
+}
+.category__list{
+    border: solid 1px lightgray;
+    padding: 0;
+}
+.category__item{
+    border: none;
+}
+.filter-list{
+    padding: 0;
+}
+.category__list,.filter,.search-card{
+    box-shadow: 0 0 10px 0 lightgray;
+}
+.card-product__text{
+    height: 100px;
+    overflow: hidden;
 }

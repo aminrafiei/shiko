@@ -90,3 +90,6 @@ Route::get('/amir', function () {
 
     return view('layouts/Product_media');
 });
+Route::get('/all_product',function (){
+   return view('layouts/all_product');
+});
