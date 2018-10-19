@@ -18,6 +18,7 @@ App::setLocale('fa');
 Auth::routes();
 Route::get('/', 'PagesController@index')->name('index');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 
 Route::group(['prefix' => 'cart'], function () {
     Route::get('/', 'CartsController@showCart')->name('show.cart');
@@ -30,7 +31,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::namespace('Admin')->group(function () {
 
-        Route::post('/logout', 'AdminLoginController@logout')->name('admin.logout');
+        Route::post('/logout', 'AdminLoginController@AdminLogout')->name('admin.logout');
         Route::get('/login', 'AdminLoginController@loginForm')->name('admin.login.form');
         Route::post('/login', 'AdminLoginController@login')->name('admin.login');
         Route::get('/', 'AdminsController@dashboard')->name('admin.dashboard');

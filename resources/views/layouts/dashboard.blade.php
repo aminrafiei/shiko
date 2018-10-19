@@ -29,7 +29,7 @@
         <div class="col-4 col-md-3 col-lg-6 "></div>
         <ul class="navbar-nav px-3 col-4 col-md-3 col-lg-2 cms-nav__list">
             <li class="nav-item text-nowrap cms-nav__item">
-                <form action="{{route('admin.login')}}" method="get">
+                <form action="{{route('admin.logout')}}" method="post">
                     @csrf
                     <input type="submit" class="nav-link cms-nav__link" value="خروج">
                     {{--<a class="nav-link cms-nav__link submit" href="#">خروج</a>--}}

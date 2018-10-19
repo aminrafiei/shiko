@@ -25,9 +25,10 @@
 
             <a class="header-tape__link header-tape__link--login" href="{{route('show.profile')}}">
                 <i class="fas fa-user header-tape__icon"></i> سلام {{Auth::getUser()->name}}
+
             </a>
 
-            <form action="{{route('logout')}}" method="post">
+            <form action="{{route('user.logout')}}" method="post">
                 @csrf
                 <input type="submit" class="nav-link cms-nav__link" value="خروج">
                 {{--<a class="nav-link cms-nav__link submit" href="#">خروج</a>--}}
