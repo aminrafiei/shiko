@@ -50,7 +50,7 @@
                         </select>
                     </div>
                     <div class="text-right">
-                        <button type="button" class="btn btn-outline-info">اضافه به علاقه مندی</button>
+                        <button type="button" class="btn btn-outline-info" disabled>اضافه به علاقه مندی</button>
                         <button type="submit"
                                 class="btn btn-outline-success" {{$product->total_qty>0 ? null : "disabled"}}>{{$product->total_qty>0 ? "خرید میکنم" : "تمام شده"}}</button>
 

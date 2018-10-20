@@ -74,7 +74,7 @@
                 </div>
             @endforeach
         </div>
-        <a class="text-center" href="#"><h5>مشاهده تمام محصولات</h5></a>
+        <a class="text-center" href="{{route('search')}}"><h5>مشاهده تمام محصولات</h5></a>
         <hr class="mb-5">
     </div>
 

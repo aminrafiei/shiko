@@ -24,7 +24,7 @@ class ProductsController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:admin')->except('showProductsDetails');
+        $this->middleware('auth:admin')->except(['showProductsDetails']);
     }
 
     public function showStoreDetails($id)
@@ -32,6 +32,7 @@ class ProductsController extends Controller
         $product = Product::with(['color', 'size'])->find($id);
         return view('admin.dashboard.store_details', compact('product'));
     }
+
 
     public function storeUpdate(Request $request, $id)
     {

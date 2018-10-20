@@ -19,6 +19,9 @@ Auth::routes();
 Route::get('/', 'PagesController@index')->name('index');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/logout', 'Auth\LoginController@userLogout')->name('user.logout');
+Route::get('/search','PagesController@search')->name('search');
+
+Route::get('/all_product','ProductsController@allProducts')->name('all.products');
 
 Route::group(['prefix' => 'cart'], function () {
     Route::get('/', 'CartsController@showCart')->name('show.cart');
@@ -87,10 +90,3 @@ Route::group(['prefix' => 'profile'], function () {
     Route::get('/fav', 'ProfileController@fav')->name('show.profile.fav');
 });
 
-Route::get('/amir', function () {
-
-    return view('layouts/Product_media');
-});
-Route::get('/all_product',function (){
-   return view('layouts/all_product');
-});

@@ -78,9 +78,9 @@
             </li>
         </ul>
         <div class="col-lg-8" style="float: left;text-align: left;direction: ltr;position: absolute;left: 0">
-            <form class="form-inline my-2 my-lg-0 col-xs-10 col-sm-pull-2 search-form">
+            <form class="form-inline my-2 my-lg-0 col-xs-10 col-sm-pull-2 search-form" action="{{route('search')}}" method="get" >
                 <input class="form-control mr-sm-2 col-lg-5 search-form__input" style="text-align: right"
-                       type="search"
+                       type="search" name="search"
                        placeholder="{{ __('messages.search') }}" aria-label="Search">
                 <button class="btn my-2 my-sm-0 search-form__button" type="submit"><i class="fas fa-search"></i>
                 </button>
@@ -97,7 +97,6 @@
     </div>
 @endif
 @include('layouts.error')
-
 
 <div class="container" style="background-color: #f6f6f6">
     @yield('content')
