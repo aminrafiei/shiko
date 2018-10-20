@@ -5,11 +5,13 @@
 @section('content')
 
     <div class="row rtl text-right my-5">
-        <div class="col-md-3 category">
+        <div class="col-md-3 category px-0">
             <ul class="list-group category__list">
                 <h6 class="category__title">دسته بندی نتایج</h6>
                 @foreach($category as $item)
-                    <a href="{{route('search.cat',['name'=>$item->name])}}"><li class="list-group-item category__item">{{$item->name}}</li></a>
+                    <a href="{{route('search.cat',['name'=>$item->name])}}">
+                        <li class="list-group-item category__item">{{$item->name}}</li>
+                    </a>
                 @endforeach
             </ul>
 
@@ -48,6 +50,24 @@
 
         </div>
         <div class="col-md-9">
+            <div class="row sort bg-info mb-3 py-2">
+                <ul class="sort_list">
+                    <span><i class="fas fa-bars mx-2"></i>مرتب سازی بر اساس:</span>
+                    <li class="sort__item" style="display: inline-block"><a class="sort__link" href="#">گران ترین</a>
+                    </li>
+                    <li class="sort__item" style="display: inline-block"><a class="sort__link" href="#">ارزان ترین</a>
+                    </li>
+                    <li class="sort__item" style="display: inline-block"><a class="sort__link" href="#">پرفروش ترین</a>
+                    </li>
+                    <li class="sort__item" style="display: inline-block"><a class="sort__link" href="#">محبوب ترین</a>
+                    </li>
+                    <li class="sort__item" style="display: inline-block"><a class="sort__link" href="#">جدید ترین</a>
+                    </li>
+                    <li class="sort__item" style="display: inline-block"><a class="sort__link" href="#">پربازدید
+                            ترین</a></li>
+
+                </ul>
+            </div>
             <div class="row">
                 @foreach($products as $product)
                     <div class="col-md-6 col-lg-3 mb-3">
