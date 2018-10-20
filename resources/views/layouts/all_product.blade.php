@@ -8,15 +8,9 @@
         <div class="col-md-3 category">
             <ul class="list-group category__list">
                 <h6 class="category__title">دسته بندی نتایج</h6>
-                <li class="list-group-item category__item">مردانه</li>
-                <ul class="list-group category__sub-list">
-                    <li class="list-group-item category__item">کاپشن، پالتو و بارانی مردانه</li>
-                    <li class="list-group-item category__item">ژاکت و پلیور مردانه</li>
-                    <li class="list-group-item category__item">سویشرت و هودی مردانه</li>
-                    <li class="list-group-item category__item">تی‌شرت و پولوشرت مردانه</li>
-                    <li class="list-group-item category__item">پیراهن مردانه</li>
-                    <li class="list-group-item category__item">کت و شلوار مردانه</li>
-                </ul>
+                @foreach($category as $item)
+                    <a href="{{route('search.cat',['name'=>$item->name])}}"><li class="list-group-item category__item">{{$item->name}}</li></a>
+                @endforeach
             </ul>
 
 
