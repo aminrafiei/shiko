@@ -24,7 +24,6 @@ class PagesController extends Controller
         //$posts = Post::with(['admin'])->get();
         $sliBars = Slidebar::all();
         $products = Product::orderBy('created_at', 'desc')->paginate(4);
-
         return view('main.index', compact('products', 'sliBars'));
     }
 

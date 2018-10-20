@@ -67,7 +67,6 @@ class ProductsController extends Controller
 
     public function showProductsDetails($id)
     {
-
         $product = Product::with(['size', 'color'])->findOrFail($id);//->with(['comment','picture']);
         return view('layouts.product', compact('product'));
     }

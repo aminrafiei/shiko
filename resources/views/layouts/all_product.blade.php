@@ -31,18 +31,18 @@
                     <ul class="list-group rtl filter-list">
                         <li class="list-group-item category__item"><input type="checkbox"
                                                                           class="filter-list__input ml-2"
-                                                                          aria-label="Checkbox for following text input">Morbi
-                            leo risus
+                                                                          aria-label="Checkbox for following text input" disabled>
+                            MANGO
                         </li>
                         <li class="list-group-item category__item"><input type="checkbox"
                                                                           class="filter-list__input ml-2"
-                                                                          aria-label="Checkbox for following text input">Porta
-                            ac consectetur ac
+                                                                          aria-label="Checkbox for following text input" disabled>
+                            COTTON
                         </li>
                         <li class="list-group-item category__item"><input type="checkbox"
                                                                           class="filter-list__input ml-2"
-                                                                          aria-label="Checkbox for following text input">Vestibulum
-                            at eros
+                                                                          aria-label="Checkbox for following text input" disabled>
+                            ADIDAS
                         </li>
                     </ul>
                 </div>
