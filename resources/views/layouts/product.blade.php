@@ -32,7 +32,7 @@
                         @endforeach
                     </em></h6>
                 <p class="text-right">{!!$product->description!!}</p>
-                <form action="{{route('add.to.cart',['id' => $product->id])}}" method="post">
+                <form action="{{route('add.to.cart',['id' => $product->id])}}" method="get">
                     @csrf
                     <div class="form-group text-right">
                         <label for="color">رنگ</label>

@@ -27,6 +27,11 @@ class PagesController extends Controller
         return view('main.index', compact('products', 'sliBars'));
     }
 
+    public function sort()
+    {
+        
+    }
+
     public function searchCat($name)
     {
         $category = Category::all();

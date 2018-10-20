@@ -25,7 +25,8 @@
                     <div class="card" style="width: 100%">
                         <div class="row" style="width: 100%;margin: 0 auto">
                             <div class="col-5" style="margin: 0 auto">
-                                <img class="card-img-top mt-3" src="{{ asset('images/userimg.jpg') }}" alt="Card image cap">
+                                <img class="card-img-top mt-3" src="{{ asset('images/userimg.jpg') }}"
+                                     alt="Card image cap">
                             </div>
                         </div>
 
@@ -33,8 +34,15 @@
                             <h5 class="card-title">{{Auth::getUser()->name}}</h5>
                             <div class="row">
                                 <div class="col-12 text-center">
-                                    <a href="#" class="col-5 btn btn-primary" style="display: inline-block">تغییر رمز</a>
-                                    <a href="#" class="col-5 btn btn-primary" style="display: inline-block">خروج از حساب</a>
+                                    <form action="{{route('user.logout')}}" method="post">
+                                        @csrf
+                                        <a href="#" class="col-5 btn btn-primary" style="display: inline-block">تغییر
+                                            رمز</a>
+
+                                        <button class="col-5 btn btn-primary"
+                                                style="display: inline-block">خروج از حساب
+                                        </button>
+                                    </form>
                                 </div>
 
                             </div>
@@ -47,7 +55,8 @@
                         <a href="#" class="list-group-item list-group-item-action">لیست علاقه مندی ها</a>
                         <a href="#" class="list-group-item list-group-item-action">نقد و نظرات</a>
                         <a href="#" class="list-group-item list-group-item-action">پیغام های من</a>
-                        <a href="{{route('show.profile.info')}}" class="list-group-item list-group-item-action">اطلاعات شخصی</a>
+                        <a href="{{route('show.profile.info')}}" class="list-group-item list-group-item-action">اطلاعات
+                            شخصی</a>
                     </div>
                 </div>
             </div>

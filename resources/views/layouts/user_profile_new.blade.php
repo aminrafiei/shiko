@@ -133,9 +133,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($orders as $order)
+                @foreach($orders as $key=>$order)
                     <tr>
-                        <th scope="row">{{$order->id}}</th>
+                        <th scope="row">{{($key++)+1}}</th>
                         <td>{{$order->order_id}}</td>
                         <td>{{$order->created_at}}</td>
                         <td>{{unserialize(base64_decode($order->cart))->totalPrice}}</td>
