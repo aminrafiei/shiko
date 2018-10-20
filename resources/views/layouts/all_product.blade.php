@@ -5,17 +5,17 @@
 @section('content')
 
     <div class="row rtl text-right my-5">
-        <div class="col-md-3 category">
+        <div class="col-md-3 category px-0">
             <ul class="list-group category__list">
-                <h6 class="category__title">دسته بندی نتایج</h6>
-                <li class="list-group-item category__item">مردانه</li>
+                <h6 class="category__title bg-info text-light">دسته بندی نتایج</h6>
+                <li class="list-group-item category__item"><a href="#" class="text-secondary">مردانه</a></li>
                 <ul class="list-group category__sub-list">
-                    <li class="list-group-item category__item">کاپشن، پالتو و بارانی مردانه</li>
-                    <li class="list-group-item category__item">ژاکت و پلیور مردانه</li>
-                    <li class="list-group-item category__item">سویشرت و هودی مردانه</li>
-                    <li class="list-group-item category__item">تی‌شرت و پولوشرت مردانه</li>
-                    <li class="list-group-item category__item">پیراهن مردانه</li>
-                    <li class="list-group-item category__item">کت و شلوار مردانه</li>
+                    <li class="list-group-item category__item"><a href="#" class="text-secondary">کاپشن، پالتو و بارانی مردانه</a></li>
+                    <li class="list-group-item category__item"><a href="#" class="text-secondary">ژاکت و پلیور مردانه</a></li>
+                    <li class="list-group-item category__item"><a href="#" class="text-secondary">سویشرت و هودی مردانه</a></li>
+                    <li class="list-group-item category__item"><a href="#" class="text-secondary">تی‌شرت و پولوشرت مردانه</a></li>
+                    <li class="list-group-item category__item"><a href="#" class="text-secondary">پیراهن مردانه</a></li>
+                    <li class="list-group-item category__item"><a href="#" class="text-secondary">کت و شلوار مردانه</a></li>
                 </ul>
             </ul>
 
@@ -54,6 +54,18 @@
 
         </div>
         <div class="col-md-9">
+            <div class="row sort bg-info mb-3 py-2">
+                <ul class="sort_list">
+                    <span><i class="fas fa-bars mx-2"></i>مرتب سازی بر اساس:</span>
+                    <li class="sort__item" style="display: inline-block"><a class="sort__link" href="#">گران ترین</a></li>
+                    <li class="sort__item" style="display: inline-block"><a class="sort__link" href="#">ارزان ترین</a></li>
+                    <li class="sort__item" style="display: inline-block"><a class="sort__link" href="#">پرفروش ترین</a></li>
+                    <li class="sort__item" style="display: inline-block"><a class="sort__link" href="#">محبوب ترین</a></li>
+                    <li class="sort__item" style="display: inline-block"><a class="sort__link" href="#">جدید ترین</a></li>
+                    <li class="sort__item" style="display: inline-block"><a class="sort__link" href="#">پربازدید ترین</a></li>
+
+                </ul>
+            </div>
             <div class="row">
                 @foreach($products as $product)
                     <div class="col-md-6 col-lg-3 mb-3">
