@@ -9,11 +9,12 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap4.css') }}">
     <link href="{{ asset('css/new-style.css') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="{{asset('fontawesome/css/all.css')}}">
-    <title>Document</title>
+    <title>Shiko</title>
 
 </head>
 <body>
 <header>
+
     <div class="header-tape">
 
         @auth()
@@ -22,22 +23,33 @@
                 <i class="fas fa-shopping-cart header-tape__icon"></i>سبد
                 خرید: {{Session::has('cart') ? Session::get('cart')->totalQuantity : " خالی"}}
             </a>
+            <div class="dropdown" style="position: relative;z-index: 1021">
+                <a class="header-tape__link header-tape__link--login dropdown-toggle" href="#" role="button"
+                   id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user header-tape__icon"></i> سلام {{Auth::getUser()->name}}
+                </a>
+                <div class="dropdown-menu text-right" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="{{route('show.profile')}}">پروفایل</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">خروج</a>
+                </div>
+            </div>
 
-            <a class="header-tape__link header-tape__link--login" href="{{route('show.profile')}}">
-                <i class="fas fa-user header-tape__icon"></i> سلام {{Auth::getUser()->name}}
-            </a>
 
-            <form action="{{route('logout')}}" method="post">
+        <!--form action="{{route('logout')}}" method="post">
                 @csrf
                 <input type="submit" class="nav-link cms-nav__link" value="خروج">
                 {{--<a class="nav-link cms-nav__link submit" href="#">خروج</a>--}}
-            </form>
+                </form-->
             @else
                 <a class="header-tape__link header-tape__link--login" href="{{route('login')}}">
                     <i class="fas fa-sign-in-alt header-tape__icon"></i> {{ __('messages.login_or_register') }}
                 </a>
 
                 @endauth
+                <div class="header-tape__logo">
+                    <img class="header-tape__image" src="{{ asset('images/logo.jpg') }}">
+                </div>
 
     </div>
 </header>
@@ -98,7 +110,7 @@
 @include('layouts.error')
 
 
-<div class="container" style="background-color: #f6f6f6">
+<div class="container-fluid py-5" style="background-color: #f6f6f6">
     @yield('content')
 </div>
 
@@ -231,7 +243,9 @@
 
 </footer>
 <!-- Footer -->
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+        integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+        crossorigin="anonymous"></script>
 <script src="{{ asset('/jquery-3.2.1.js') }}"></script>
 <script src="{{ asset('/js/bootstrap4.js') }}"></script>
 

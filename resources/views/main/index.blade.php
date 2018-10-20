@@ -2,13 +2,13 @@
 
 @section('content')
 
-    <div class="container-fluid my-5">
-        <div class="row">
-            <div class="col-sm-8 border border-secondary rounded">
+
+        <div class="row px-4">
+            <div class="col-sm-8">
 
                 <div id="amazingslider-wrapper-1"
                      style="display:block;position:relative;max-width:1300px;margin:50px auto 44px;">
-                    <div id="amazingslider-1" style="display:block;position:relative;margin:0 auto;">
+                    <div id="amazingslider-1" style="display:none;position:relative;margin:0 auto;">
                         <ul class="amazingslider-slides" style="display:none;">
                             @foreach($sliBars as $slibar)
                                 <li>
@@ -44,7 +44,7 @@
             </div>
         </div>
         <hr>
-    </div>
+
 
     <div class="container text-center">
         <h3>جدید ترین محصولات</h3>

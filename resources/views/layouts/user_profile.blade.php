@@ -22,18 +22,21 @@
         <div class="row" style="direction: rtl;text-align: right">
             <div class="col-md-3">
                 <div class="row">
-                    <div class="card" style="">
-                        <div class="row">
+                    <div class="card" style="width: 100%">
+                        <div class="row" style="width: 100%;margin: 0 auto">
                             <div class="col-5" style="margin: 0 auto">
-                                <img class="card-img-top" src="{{ asset('images/userimg.jpg') }}" alt="Card image cap">
+                                <img class="card-img-top mt-3" src="{{ asset('images/userimg.jpg') }}" alt="Card image cap">
                             </div>
                         </div>
 
                         <div class="card-body">
                             <h5 class="card-title">{{Auth::getUser()->name}}</h5>
                             <div class="row">
-                                <a href="#" class="col-5 btn btn-primary" style="display: inline-block">تغییر رمز</a>
-                                <a href="#" class="col-5 btn btn-primary" style="display: inline-block">خروج از حساب</a>
+                                <div class="col-12 text-center">
+                                    <a href="#" class="col-5 btn btn-primary" style="display: inline-block">تغییر رمز</a>
+                                    <a href="#" class="col-5 btn btn-primary" style="display: inline-block">خروج از حساب</a>
+                                </div>
+
                             </div>
                         </div>
                     </div>
