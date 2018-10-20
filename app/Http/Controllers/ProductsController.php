@@ -101,7 +101,7 @@ class ProductsController extends Controller
             $img = $request->file('image');
             $filename = time() . "." . $img->getClientOriginalExtension();
             $location = public_path("images/" . $filename);
-            Image::make($img)->resize(800, 400)->save($location);
+            Image::make($img)->save($location);
             $product->image = $filename;
             $product->save();
         }
@@ -114,7 +114,7 @@ class ProductsController extends Controller
                 global $i;
                 $filename = (time() + $i) . "." . $image->getClientOriginalExtension();
                 $location = public_path("images/" . $filename);
-                Image::make($image)->resize(800, 400)->save($location);
+                Image::make($image)->save($location);
                 if ($i == null)
                     $i = 0;
                 $pp = Picture::find($pic[$i]->id);
@@ -172,7 +172,7 @@ class ProductsController extends Controller
             $filename = time() . "." . $img->getClientOriginalExtension();
             $location = public_path("images/" . $filename);
 
-            Image::make($img)->resize(800, 400)->save($location);
+            Image::make($img)->save($location);
             $product->image = $filename;
         }
 
@@ -186,7 +186,7 @@ class ProductsController extends Controller
 
                 $filename = (time() + $i) . "." . $image->getClientOriginalExtension();
                 $location = public_path("images/" . $filename);
-                Image::make($image)->resize(800, 400)->save($location);
+                Image::make($image)->save($location);
                 $i++;
 
                 Picture::create([

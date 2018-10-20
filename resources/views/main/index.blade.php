@@ -56,7 +56,7 @@
                         @if($product->image == null)
                             <img class="card-img-top" src="{{asset('images/main-banner-01-tn.jpg')}}">
                         @else
-                            <img class="card-img-top" src="{{asset('images/'.$product->image)}}">
+                            <img class="card-img-top" src="{{asset('images/'.$product->image)}}" style="height: 250px">
                         @endif
 
                         <div class="card-body">

@@ -8,18 +8,20 @@
 
         <div class="row">
             <div class="col-6">
-                    <img src="{{asset('images/'.$product->image)}}" class="img-thumbnail " alt="picture!">
+                <div style="">
+                    <img src="{{asset('images/'.$product->image)}}" class="img-thumbnail " alt="picture!" style="height: 600px;width: 550px">
+                </div>
                 <div class="row">
                     @foreach($product->picture as $picture)
                         <div class="col-4 col-sm-6m-12">
-                            <img src="{{asset('images/'.$picture->picture)}}" class="img-thumbnail" alt="picture!">
+                            <img src="{{asset('images/'.$picture->picture)}}" class="img-thumbnail" alt="picture!" style="height: 200px">
                         </div>
                     @endforeach
                 </div>
             </div>
             <div class="col-6">
                 <h1 class="text-right">{{$product->title}}</h1>
-                <h4 class="text-right my-3">قیمت:{{$product->price}} ریال</h4>
+                <h4 class="text-right my-3">قیمت:{{$product->price}} تومان</h4>
                 @if($product->total_qty > 0)
                     <h6 class="text-right">موجودی:درانبار</h6>
                 @else
@@ -92,7 +94,8 @@
 
         @guest
             <div class="container-form">
-                <p class="text-right">لطفا برای ثبت نظر خود <a href="{{route('login')}}">وارد</a> اکانت خود شوید و در صورت نداشتن حساب <a href="{{route('register')}}"> ثبت نام</a> کنید</p>
+                <p class="text-right">لطفا برای ثبت نظر خود <a href="{{route('login')}}">وارد</a> اکانت خود شوید و در
+                    صورت نداشتن حساب <a href="{{route('register')}}"> ثبت نام</a> کنید</p>
             </div>
             @else
                 <div class="panel-body">
