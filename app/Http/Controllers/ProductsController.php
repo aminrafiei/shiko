@@ -67,7 +67,6 @@ class ProductsController extends Controller
 
     public function showProductsDetails($id)
     {
-
         $product = Product::with(['size', 'color'])->findOrFail($id);//->with(['comment','picture']);
         return view('layouts.product', compact('product'));
     }
@@ -106,11 +105,6 @@ class ProductsController extends Controller
             $product->image = $filename;
             $product->save();
         }
-        $sliBar = Slidebar::where('product_id', $id);
-        /*$sliBar->update([
-            'product_id' => $product->id,
-            'image' => $product->image
-        ]);*/
         if ($request->hasFile('images')) {
 
             $pic = Picture::where('product_id', $product->id)->get();

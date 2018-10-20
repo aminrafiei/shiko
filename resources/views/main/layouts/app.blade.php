@@ -31,18 +31,18 @@
                 <div class="dropdown-menu text-right" aria-labelledby="dropdownMenuLink">
                     <a class="dropdown-item" href="{{route('show.profile')}}">پروفایل</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">خروج</a>
+                    <form action="{{route('user.logout')}}" method="post">
+                        @csrf
+                        <input type="submit" class="dropdown-item" value="خروج">
+                    </form>
                 </div>
             </div>
 
-        <!--form action="{{route('user.logout')}}" method="post">
+
+        <!--form action="{{route('user.logout')}}" method="post"-->
 
 
 
-                @csrf
-                <input type="submit" class="nav-link cms-nav__link" value="خروج">
-                {{--<a class="nav-link cms-nav__link submit" href="#">خروج</a>--}}
-                </form-->
             @else
                 <a class="header-tape__link header-tape__link--login" href="{{route('login')}}">
                     <i class="fas fa-sign-in-alt header-tape__icon"></i> {{ __('messages.login_or_register') }}
@@ -78,9 +78,7 @@
                     {{__('messages.products')}}
                 </a>
                 <div class="dropdown-menu main-dropdown" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item main-dropdown__item" href="#">دسته بندی1</a>
-                    <a class="dropdown-item main-dropdown__item" href="#">دسته بندی2</a>
-                    <a class="dropdown-item main-dropdown__item" href="#">دسته بندی3</a>
+
                 </div>
             </li>
             <li class="nav-item main-nav__item">

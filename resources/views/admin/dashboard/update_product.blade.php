@@ -26,8 +26,10 @@
                 <textarea name="description" title="description"
                           id="mytextarea">{{$product->description}}</textarea>
                 <div class="offset-9">
-                    <input class="form-control my-2" type="number" name="price" placeholder="قیمت" value={{$product->price}} required>
-                    <input class="form-control my-2" type="text" name="tag" placeholder="برچسب ها" value={{$product->tag}}>
+                    <input class="form-control my-2" type="number" name="price" placeholder="قیمت"
+                           value={{$product->price}} required>
+                    <input class="form-control my-2" type="text" name="tag" placeholder="برچسب ها"
+                           value={{$product->tag}}>
                 </div>
 
                 <div class="mt-3">
@@ -67,28 +69,28 @@
                     <label class="text-right" for="image">عکس:</label>
                     <img src={{asset('images/'.$product->image)}} id="output" alt="image" name="image"
                          class="card-img col-md-8 offset-md-5" style="height: 200px;width: 300px">
-                    <input class="form-control btn-outline-primary my-2" id="img" type="file" name="image" onchange="readURL(this);" accept="image/*">
+                    <input class="form-control btn-outline-primary my-2" id="img" type="file" name="image"
+                           onchange="readURL(this);" accept="image/*">
                 </div>
                 <!--<input type="file" class="form-control" name="images[]" placeholder="address" multiple>-->
 
                 <input type="file" id="uploadFile" name="images[]" multiple accept="image/*"
                        class="form__input form__input--browse" style="display: none"/>
 
-                <input type="submit" id="submit" value="به روزرسانی محصول" class="btn btn-outline-success container-fluid">
+                <input type="submit" id="submit" value="به روزرسانی محصول"
+                       class="btn btn-outline-success container-fluid">
 
-                @include('layouts.error')
-
+                <div class="my-2 row">
+                    @foreach($product->picture as $image)
+                        <img src="{{asset('images/'.$image->picture)}}" class="col-4 card-img-top">
+                    @endforeach
+                </div>
+                <input type="file" class="btn btn-outline-primary container-fluid" name="images[]" placeholder="address"
+                       multiple accept="image/*">
+                <em>بیشتر از ۳ عکس اضافه نشود</em>
             </fieldset>
         </form>
-
-        <div class="my-2 row">
-
-            @foreach($product->picture as $image)
-                <img src="{{asset('images/'.$image->picture)}}" class="col-4 card-img-top">
-            @endforeach
-
-        </div>
-        <button class="btn btn-outline-primary container-fluid" id="openFrame" onclick="openFrame()">انتخاب عکس</button>
+        @include('layouts.error')
     </div>
 
     <hr>

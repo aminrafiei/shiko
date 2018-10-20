@@ -64,7 +64,7 @@
                            onchange="loadFile(event)" style="display: none;">
                 </div>
 
-                <input type="file" class="form-control" name="images[]" placeholder="address" multiple>
+                <input type="file" class="form-control" name="images[]" placeholder="address" multiple accept="image/*" >
                 <em>بیشتر از ۳ عکس اضافه نشود</em>
                 <br>
                 <input type="submit" id="submit" value="ایجاد محصول" class="btn btn-outline-success my-2 container-fluid">
