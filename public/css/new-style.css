@@ -480,3 +480,9 @@ nav .navbar-nav li a {
     height: 100px;
     overflow: hidden;
 }
+.pagination{
+    width: 200px;
+    padding: 0;
+    margin: 0 auto;
+    text-align: center;
+}

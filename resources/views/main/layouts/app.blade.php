@@ -34,7 +34,7 @@
                     <a class="dropdown-item" href="#">خروج</a>
                 </div>
             </div>
-        
+
         <!--form action="{{route('user.logout')}}" method="post">
 
 

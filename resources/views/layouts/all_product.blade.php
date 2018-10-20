@@ -10,12 +10,17 @@
                 <h6 class="category__title bg-info text-light">دسته بندی نتایج</h6>
                 <li class="list-group-item category__item"><a href="#" class="text-secondary">مردانه</a></li>
                 <ul class="list-group category__sub-list">
-                    <li class="list-group-item category__item"><a href="#" class="text-secondary">کاپشن، پالتو و بارانی مردانه</a></li>
-                    <li class="list-group-item category__item"><a href="#" class="text-secondary">ژاکت و پلیور مردانه</a></li>
-                    <li class="list-group-item category__item"><a href="#" class="text-secondary">سویشرت و هودی مردانه</a></li>
-                    <li class="list-group-item category__item"><a href="#" class="text-secondary">تی‌شرت و پولوشرت مردانه</a></li>
+                    <li class="list-group-item category__item"><a href="#" class="text-secondary">کاپشن، پالتو و بارانی
+                            مردانه</a></li>
+                    <li class="list-group-item category__item"><a href="#" class="text-secondary">ژاکت و پلیور
+                            مردانه</a></li>
+                    <li class="list-group-item category__item"><a href="#" class="text-secondary">سویشرت و هودی
+                            مردانه</a></li>
+                    <li class="list-group-item category__item"><a href="#" class="text-secondary">تی‌شرت و پولوشرت
+                            مردانه</a></li>
                     <li class="list-group-item category__item"><a href="#" class="text-secondary">پیراهن مردانه</a></li>
-                    <li class="list-group-item category__item"><a href="#" class="text-secondary">کت و شلوار مردانه</a></li>
+                    <li class="list-group-item category__item"><a href="#" class="text-secondary">کت و شلوار مردانه</a>
+                    </li>
                 </ul>
             </ul>
 
@@ -57,12 +62,18 @@
             <div class="row sort bg-info mb-3 py-2">
                 <ul class="sort_list">
                     <span><i class="fas fa-bars mx-2"></i>مرتب سازی بر اساس:</span>
-                    <li class="sort__item" style="display: inline-block"><a class="sort__link" href="#">گران ترین</a></li>
-                    <li class="sort__item" style="display: inline-block"><a class="sort__link" href="#">ارزان ترین</a></li>
-                    <li class="sort__item" style="display: inline-block"><a class="sort__link" href="#">پرفروش ترین</a></li>
-                    <li class="sort__item" style="display: inline-block"><a class="sort__link" href="#">محبوب ترین</a></li>
-                    <li class="sort__item" style="display: inline-block"><a class="sort__link" href="#">جدید ترین</a></li>
-                    <li class="sort__item" style="display: inline-block"><a class="sort__link" href="#">پربازدید ترین</a></li>
+                    <li class="sort__item" style="display: inline-block"><a class="sort__link" href="#">گران ترین</a>
+                    </li>
+                    <li class="sort__item" style="display: inline-block"><a class="sort__link" href="#">ارزان ترین</a>
+                    </li>
+                    <li class="sort__item" style="display: inline-block"><a class="sort__link" href="#">پرفروش ترین</a>
+                    </li>
+                    <li class="sort__item" style="display: inline-block"><a class="sort__link" href="#">محبوب ترین</a>
+                    </li>
+                    <li class="sort__item" style="display: inline-block"><a class="sort__link" href="#">جدید ترین</a>
+                    </li>
+                    <li class="sort__item" style="display: inline-block"><a class="sort__link" href="#">پربازدید
+                            ترین</a></li>
 
                 </ul>
             </div>
@@ -70,7 +81,7 @@
                 @foreach($products as $product)
                     <div class="col-md-6 col-lg-3 mb-3">
                         <div class="card card-product">
-                            <img class="card-img-top" src="{{asset('images/'.$product->image)}}" alt="Card image cap">
+                            <img class="card-img-top card-product__image" src="{{asset('images/'.$product->image)}}" alt="Card image cap">
                             <div class="card-body card-product__body">
                                 <div class="card-product__text">
                                     <p class="card-text">{{$product->title}}</p>
@@ -85,8 +96,10 @@
             </div>
         </div>
         <div class="row my-3 container-fluid">
-            <div class="col-md-8 offset-md-5">
+            <div class="col-md-8 mx-auto">
+
                 {{ $products->links() }}
+
             </div>
         </div>
     </div>
