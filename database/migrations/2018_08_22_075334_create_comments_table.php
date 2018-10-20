@@ -19,7 +19,7 @@ class CreateCommentsTable extends Migration
             $table->unsignedInteger('product_id');
             $table->string('title');
             $table->text('description');
-
+            $table->boolean('isShow');
             $table->timestamps();
 
             $table->foreign('user_id')

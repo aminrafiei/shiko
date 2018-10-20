@@ -65,7 +65,7 @@
                             <div class="card-body container-fluid">
                                 <div class="row">
                                     <div class="col-6">
-                                        <span>2000</span>
+                                        <span>{{$cart->totalPrice}}</span>
                                     </div>
                                     <div class="col-6">
                                         <span class="text-right">:جمع صورتحساب</span>

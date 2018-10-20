@@ -65,34 +65,38 @@
                         <div class="card-header">
                             <span>تایید و پرداخت</span>
                         </div>
-                        <form action="{{route('order.confirm')}}" method="post" role="form">
-                            @csrf
-                            <input type="hidden" name="order_id" value={{uniqid()}}>
-                            <input type="hidden" name="user_id" value={{Auth::getUser()->id}}>
-                            <input type="hidden" name="cart" value={{base64_encode(serialize($cart))}}>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div>
-                                            <label>پرداخت در محل </label>
-                                            <input type="radio" name="peyment_type" value="offline" checked>
+                        @if(!empty(Auth::getUser()->postal_code) && !empty(Auth::getUser()->address))
+                            <form action="{{route('order.confirm')}}" method="post" role="form">
+                                @csrf
+                                <input type="hidden" name="order_id" value={{uniqid()}}>
+                                <input type="hidden" name="user_id" value={{Auth::getUser()->id}}>
+                                <input type="hidden" name="cart" value={{base64_encode(serialize($cart))}}>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div>
+                                                <label>پرداخت در محل </label>
+                                                <input type="radio" name="peyment_type" value="offline" checked>
+                                            </div>
+                                            <div>
+                                                <label>پرداخت آنلاین</label>
+                                                <input type="radio" name="peyment_type" value="online" disabled>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <label>پرداخت آنلاین</label>
-                                            <input type="radio" name="peyment_type" value="online" disabled>
+                                        <div class="col-6">
+                                            <p>:قابل پرداخت
+                                            <p>
+                                            {{$cart->totalPrice}}
                                         </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <p>:قابل پرداخت
-                                        <p>
-                                        {{$cart->totalPrice}}
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card-footer text-muted">
-                                <button class="btn btn-outline-success">ثبت سفارش</button>
-                            </div>
-                        </form>
+                                <div class="card-footer text-muted">
+                                    <button class="btn btn-outline-success">ثبت سفارش</button>
+                                </div>
+                            </form>
+                            @else
+                            <h4>برای ادامه لطفا اطلاعات خود را در صفحه <a href="{{route('show.profile')}}">پروفایل</a> خود کامل کنید</h4>
+                        @endif
                     </div>
                 </div>
             </div>

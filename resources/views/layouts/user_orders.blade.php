@@ -3,7 +3,7 @@
 
 @section('content2')
 
-    <div class="row mt-5">
+    <div class="row">
         <div class="card container-fluid mr-2">
             <div class="card-body">
                 <div class="row">
