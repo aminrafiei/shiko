@@ -36,12 +36,11 @@ class ProductsController extends Controller
 
     public function storeUpdate(Request $request, $id)
     {
-        /*
+
         $this->validate($request, [
-            'color' => 'required|numeric',
-            'size' => 'required|numeric',
+            "size.*" => 'required|numeric',
         ]);
-        */
+
         $product = Product::with(['color', 'size'])->find($id);
         $total = 0;
 
@@ -127,7 +126,6 @@ class ProductsController extends Controller
         }
 
         $product->size()->sync($request->get('size_id'));
-        //$product->color()->sync($request->get('color_id'));
         $product->category()->sync($request->get('category_id'));
         return redirect()->route('admin.dashboard')->with('status', 'successfully updated!');
 
@@ -156,14 +154,15 @@ class ProductsController extends Controller
         //not really hard code =D
 
         $validated = $request->validated();
-
-        $product = new Product;
-        $product->admin_id = Auth::user()->id;
-        $product->title = $request->title;
-        $product->description = $request->description;
-        $product->price = $request->price;
-        $product->tag = $request->tag;
-        $product->color_id = $request->color_id;
+//        dd($request->toArray());
+        //$product = new Product;
+        $product = Product::create(['price' => 1,'admin_id'=>1]);
+//        $product->admin_id = Auth::user()->id;
+//        $product->title = $request->title;
+//        $product->description = $request->description;
+//        $product->price = $request->price;
+//        $product->tag = $request->tag;
+//        $product->color_id = $request->color_id;
 
 
         if ($request->hasFile('image')) {
@@ -171,7 +170,6 @@ class ProductsController extends Controller
             $img = $request->file('image');
             $filename = time() . "." . $img->getClientOriginalExtension();
             $location = public_path("images/" . $filename);
-
             Image::make($img)->save($location);
             $product->image = $filename;
         }
@@ -179,21 +177,14 @@ class ProductsController extends Controller
         $product->save();
         sleep(1);
         if ($request->hasFile('images')) {
-            $i = 1;
             foreach ($request->images as $image) {
-
                 global $i;
-
                 $filename = (time() + $i) . "." . $image->getClientOriginalExtension();
                 $location = public_path("images/" . $filename);
                 Image::make($image)->save($location);
                 $i++;
 
-                Picture::create([
-                    'product_id' => $product->id,
-                    'picture' => $filename
-                ]);
-
+                Picture::create(['product_id' => $product->id, 'picture' => $filename]);
             }
         }
 

@@ -16,7 +16,7 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             $table->string('order_id')->unique();
-            $table->text('cart');
+            $table->mediumText('cart');
             $table->unsignedInteger('user_id');
             $table->boolean('confirm')->default(0);
             $table->string('peyment_type');
