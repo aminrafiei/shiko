@@ -90,3 +90,9 @@ Route::group(['prefix' => 'profile'], function () {
     Route::get('/fav', 'ProfileController@fav')->name('show.profile.fav');
 });
 
+Route::get('/about_us',function(){
+    return view('layouts/about_us');
+});
+Route::get('/contact_us',function(){
+    return view('layouts/contact_us');
+});

@@ -111,7 +111,7 @@
 @include('layouts.error')
 
 
-<div class="container-fluid py-5" style="background-color: #f6f6f6">
+<div class="container-fluid py-4" style="background-color: #f6f6f6">
 
     @yield('content')
 </div>
