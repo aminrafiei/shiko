@@ -16,43 +16,54 @@
 <header>
 
     <div class="header-tape">
+        <div class="row" style="margin: 0;padding: 0;width: 100%;height: 100%">
 
-        @auth()
-
-            <a class="header-tape__link header-tape__link--cart" href={{route('show.cart')}}>
-                <i class="fas fa-shopping-cart header-tape__icon"></i>سبد
-                خرید: {{Session::has('cart') ? Session::get('cart')->totalQuantity : " خالی"}}
-            </a>
-            <div class="dropdown" style="position: relative;z-index: 1021">
-                <a class="header-tape__link header-tape__link--login dropdown-toggle" href="#" role="button"
-                   id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-user header-tape__icon"></i> سلام {{Auth::getUser()->name}}
-                </a>
-                <div class="dropdown-menu text-right" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="{{route('show.profile')}}">پروفایل</a>
-                    <div class="dropdown-divider"></div>
-                    <form action="{{route('user.logout')}}" method="post">
-                        @csrf
-                        <input type="submit" class="dropdown-item" value="خروج">
-                    </form>
-                </div>
-            </div>
-
-
-        <!--form action="{{route('user.logout')}}" method="post"-->
-
-
-
-            @else
-                <a class="header-tape__link header-tape__link--login" href="{{route('login')}}">
-                    <i class="fas fa-sign-in-alt header-tape__icon"></i> {{ __('messages.login_or_register') }}
-                </a>
-
-                @endauth
+            <div class="col-12 col-md-6 col-lg-8 text-right">
                 <div class="header-tape__logo">
                     <img class="header-tape__image" src="{{ asset('images/logo.jpg') }}">
                 </div>
+            </div>
+            @auth()
 
+                <div class="col-6 col-md-3 col-lg-2 header-tape__link-position">
+                    <a class="header-tape__link header-tape__link--cart" href={{route('show.cart')}}>
+                        <i class="fas fa-shopping-cart header-tape__icon"></i>سبد
+                        خرید: {{Session::has('cart') ? Session::get('cart')->totalQuantity : " خالی"}}
+                    </a>
+
+                </div>
+                <div class="col-6 col-md-3 col-lg-2 header-tape__link-position">
+                    <div class="dropdown" style="position: relative;z-index: 1021;width: 100%;height: 100%">
+                        <a class="header-tape__link header-tape__link--login dropdown-toggle" href="#" role="button"
+                           id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user header-tape__icon"></i> سلام {{Auth::getUser()->name}}
+                        </a>
+                        <div class="dropdown-menu text-right" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="{{route('show.profile')}}">پروفایل</a>
+                            <div class="dropdown-divider"></div>
+                            <form action="{{route('user.logout')}}" method="post">
+                                @csrf
+                                <input type="submit" class="dropdown-item" value="خروج">
+                            </form>
+                        </div>
+                    </div>
+
+                    @else
+                        <div class="col-12 header-tape__link-position">
+                            <a class="header-tape__link header-tape__link--login" href="{{route('login')}}">
+                                <i class="fas fa-sign-in-alt header-tape__icon"></i> {{ __('messages.login_or_register') }}
+                            </a>
+                        </div>
+
+
+                        @endauth
+                </div>
+
+
+
+
+        </div>
+    </div>
     </div>
 </header>
 <nav class="navbar navbar-expand-lg sticky-top main-nav">
@@ -71,15 +82,10 @@
                             class="sr-only">(current)</span></a>
             </li>
 
-            <li class="nav-item dropdown main-nav__item">
-                <a class="nav-link dropdown-toggle main-nav__link" href="#" id="navbarDropdown" role="button"
-                   data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">
+            <li class="nav-item main-nav__item">
+                <a class="nav-link main-nav__link" href="{{route('search')}}">
                     {{__('messages.products')}}
                 </a>
-                <div class="dropdown-menu main-dropdown" aria-labelledby="navbarDropdown">
-
-                </div>
             </li>
             <li class="nav-item main-nav__item">
                 <a class="nav-link main-nav__link" href="#">{{__('messages.contact_us')}}</a>
@@ -88,14 +94,16 @@
                 <a class="nav-link main-nav__link" href="#">{{__('messages.about_us')}}</a>
             </li>
         </ul>
-        <div class="col-lg-8" style="float: left;text-align: left;direction: ltr;position: absolute;left: 0">
-            <form class="form-inline my-2 my-lg-0 col-xs-10 col-sm-pull-2 search-form" action="{{route('search')}}"
+        <div class="col-12 col-lg-8 search-form-position">
+            <form class="form-inline my-2 my-lg-0 col-10 col-sm-pull-2 search-form" action="{{route('search')}}"
                   method="get">
-                <input class="form-control mr-sm-2 col-lg-5 search-form__input" style="text-align: right"
+                <input class="form-control col-lg-5 col-10 search-form__input" style="text-align: right"
                        type="search" name="search"
                        placeholder="{{ __('messages.search') }}" aria-label="Search">
-                <button class="btn my-2 my-sm-0 search-form__button" type="submit"><i class="fas fa-search"></i>
-                </button>
+                <div class="col-1">
+                    <button class="btn my-2 my-sm-0 search-form__button" type="submit"><i class="fas fa-search"></i>
+                    </button>
+                </div>
             </form>
         </div>
 

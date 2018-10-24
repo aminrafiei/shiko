@@ -15,11 +15,14 @@
 body {
     padding: 0;
     margin: 0;
+    background-color: #f6f6f6;
 }
-.rtl{
+
+.rtl {
     direction: rtl;
 }
-.ltr{
+
+.ltr {
     direction: ltr;
 }
 
@@ -27,24 +30,29 @@ body {
 .header-tape {
     text-align: center;
     direction: rtl;
-    height: 80px;
-    padding: 0 5px;
+    height: auto;
+    padding: 0;
     font-size: 14px;
     position: relative;
+    background-color: white;
+}
+
+.header-tape__link-position {
+    position: relative;
+    padding: 0;
+    height: 70px;
 }
 
 .header-tape__link {
-    text-align: right;
-    direction: rtl;
     color: #48a4b8;
     text-decoration: none;
+    padding: 10px 20px;
     background-color: whitesmoke;
     border: solid 1px #48a4b8;
     border-radius: 5px;
     box-shadow: 0 0 10px 0 lightgray;
     position: absolute;
-    top: 18px;
-    padding: 10px 20px;
+    top: 50%;
 }
 
 .header-tape__link:hover {
@@ -62,20 +70,24 @@ body {
 }
 
 .header-tape__link--login {
-    right: 20px;
+    left: 20px;
+    transform: translate(0, -50%);
 }
 
 .header-tape__link--user {
-    right: 130px;
+    left: 50%;
 }
 
 .header-tape__link--cart {
-    left: 20px;
+    left: 0;
+    transform: translate(0, -50%);
 }
-.header-tape__image{
+
+.header-tape__image {
     width: 150px;
 
 }
+
 .main-nav {
 
     direction: rtl;
@@ -92,12 +104,21 @@ body {
 
 .main-nav__icon {
     color: white;
+    font-size: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+.main-nav__toggle-btn:focus {
+    outline: none;
+    border: 1px solid lightgreen;
 }
 
 .main-nav__list {
     width: auto;
     margin: 0;
     padding: 0;
+    position: relative;
 }
 
 .main-nav__item {
@@ -118,6 +139,14 @@ body {
 
 nav .navbar-nav li a {
     color: white !important;
+}
+
+.search-form-position {
+    float: left;
+    text-align: left;
+    direction: ltr;
+    position: absolute;
+    left: 0;
 }
 
 .search-form {
@@ -144,8 +173,43 @@ nav .navbar-nav li a {
     padding: 10px 0;
     text-align: center;
 }
+
 .main-dropdown__item:hover {
     background-color: #4093a5;
+}
+
+@media screen and (max-width: 768px) {
+    .header-tape__link {
+        min-width: 80%;
+
+    }
+
+    .header-tape__link--login {
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .header-tape__link--cart {
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .header-tape__logo {
+        text-align: center;
+    }
+
+}
+
+@media screen and (max-width: 992px) {
+    .search-form-position {
+        bottom: -70px;
+        top: auto;
+        padding: 0;
+        background-color: #48a4b8;
+    }
+    .main-nav{
+        margin-bottom: 80px;
+    }
 }
 
 /*********footer************/
@@ -229,6 +293,7 @@ nav .navbar-nav li a {
     color: #48a4b8;
     text-align: center;
 }
+
 /*Amin*/
 .img-size {
 
@@ -362,6 +427,7 @@ nav .navbar-nav li a {
 .post .post-footer .comments-list .comment > .comments-list {
     margin-left: 50px;
 }
+
 /*******dashboard***********/
 .cms {
     direction: rtl;
@@ -370,127 +436,154 @@ nav .navbar-nav li a {
 .cms-nav {
     direction: rtl;
 }
-.cms-nav__link{
+
+.cms-nav__link {
     display: inline-block;
     width: 80px;
     border: solid 1px #265863;
     text-align: center;
 }
-.cms-nav__link:hover{
+
+.cms-nav__link:hover {
     background-color: #265863;
 }
-.cms-nav__company-name{
+
+.cms-nav__company-name {
     text-align: center;
     background-color: #265863;
 }
+
 .cms-sidebar {
     height: 100vh;
     text-align: right;
-    background: linear-gradient(to bottom, #204755, #1c495a ) !important;
+    background: linear-gradient(to bottom, #204755, #1c495a) !important;
     position: fixed;
     z-index: 10;
     padding: 0;
 }
-.cms-sidebar__list{
+
+.cms-sidebar__list {
     width: 100%;
     margin: 0;
     padding: 0;
 }
-.cms-sidebar__item{
+
+.cms-sidebar__item {
     text-align: right;
     transition-duration: 0.4s;
 }
-.cms-sidebar__link{
+
+.cms-sidebar__link {
     padding: 15px 30px;
     color: white;
     box-sizing: border-box;
     border-right: solid 5px #204755;
     transition-duration: .3s;
 }
-.cms-sidebar__dropdown{
+
+.cms-sidebar__dropdown {
     display: none;
     width: 100%;
 }
-.cms-sidebar__icon{
+
+.cms-sidebar__icon {
     font-size: 20px;
 }
-.cms-sidebar__item:hover , .cms-sidebar__item.active{
+
+.cms-sidebar__item:hover, .cms-sidebar__item.active {
     box-shadow: 0 0 10px -3px black inset;
 }
-.cms-sidebar__item:hover .cms-sidebar__link , .cms-sidebar__item.active .cms-sidebar__link{
-    color:  #65AAD3;
+
+.cms-sidebar__item:hover .cms-sidebar__link, .cms-sidebar__item.active .cms-sidebar__link {
+    color: #65AAD3;
     border-right: solid 5px #65AAD3;
 }
 
-.cms-sidebar__dropdown .cms-sidebar__link:hover{
+.cms-sidebar__dropdown .cms-sidebar__link:hover {
     background-color: #65AAD3 !important;
     box-shadow: 0 0 10px -3px black inset;
 }
-.show{
+
+.show {
     display: block;
 }
-.dashboard-main{
+
+.dashboard-main {
     background-color: whitesmoke;
 }
-@media screen and (max-width: 769px){
-    .cms-sidebar{
+
+@media screen and (max-width: 769px) {
+    .cms-sidebar {
         position: static;
         height: auto;
     }
 }
 
 /******user profile*********/
-.block-item{
+.block-item {
     height: 100px;
     border: solid 1px lightgray;
 }
+
 /*******all product*************/
-.category{
-    background-color: white;!important;
+.category {
+    background-color: white;
+!important;
 }
-.category__title{
+
+.category__title {
     padding: 10px 10px;
     border-bottom: solid 1px lightgray;
 }
-.category__list{
+
+.category__list {
     border: solid 1px lightgray;
     padding: 0;
 }
-.category__item{
+
+.category__item {
     border: none;
 }
-.filter-list{
+
+.filter-list {
     padding: 0;
 }
-.category__list,.filter,.search-card{
+
+.category__list, .filter, .search-card {
     box-shadow: 0 0 10px 0 lightgray;
 }
-.sort_list{
+
+.sort_list {
     padding: 0;
     margin: 0;
 }
-.sort__link{
+
+.sort__link {
     padding: 2px 10px;
     background-color: #48a4b8;
     color: white;
     text-decoration: none;
     border-radius: 5px;
 }
-.card-product__text{
+
+.card-product__text {
     height: 100px;
     overflow: hidden;
 }
-.pagination{
+
+.pagination {
     width: 200px;
     padding: 0;
     margin: 0 auto;
     text-align: center;
 }
+
 /*******about us*************/
-.about-us-content{
+.about-us-content {
     background-color: white;
 }
-.about-us{
+
+.about-us {
     min-height: 600px;
     height: auto;
     background-image: url("../images/about_us_bg.jpg");
@@ -498,62 +591,75 @@ nav .navbar-nav li a {
     background-repeat: no-repeat;
     margin-bottom: 200px;
 }
-.about-us__body{
+
+.about-us__body {
     margin: 20px auto;
     text-align: right;
     border-radius: 5px;
-    background-color: rgba(72, 164, 184,.9);
+    background-color: rgba(72, 164, 184, .9);
     color: white;
     padding: 15px 80px;
 }
-.about-us__title{
+
+.about-us__title {
     text-align: center;
 }
-.about-us__sub-title{
+
+.about-us__sub-title {
     text-align: center;
     margin-bottom: 50px;
 }
-.about-us__text{
+
+.about-us__text {
     line-height: 2rem;
 }
-.more-info{
+
+.more-info {
     padding: 0;
 }
-.more-info__image{
+
+.more-info__image {
     padding: 0;
     margin: 0;
     display: inline-block;
 }
-.more-info__text-container{
+
+.more-info__text-container {
     display: inline-block;
 }
-.more-info__text{
+
+.more-info__text {
     direction: rtl;
     text-align: right;
 }
-.more-info__text--inline{
+
+.more-info__text--inline {
     padding: 0;
     margin: 0;
     display: inline-block;
 }
-@media screen and (max-width: 576px){
-    .about-us__body{
+
+@media screen and (max-width: 576px) {
+    .about-us__body {
         padding: 15px 5px;
     }
 }
+
 /*********contact us************/
-.contact-us__list{
+.contact-us__list {
     padding: 15px 50px;
-    background-color: rgba(255,191,0,.2);
+    background-color: rgba(255, 191, 0, .2);
     border: solid 1px #ffbf00;
     border-radius: 5px;
     color: #B47135;
 }
-.contact-us__item{
+
+.contact-us__item {
     line-height: 2rem;
 }
-.contact-us__phone-number{
-    background-color: rgba(153,255,153,.4);
+
+.contact-us__phone-number {
+    background-color: rgba(153, 255, 153, .4);
     padding: 15px;
     color: #3D663D;
     border: solid 1px #7ACC7A;

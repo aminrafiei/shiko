@@ -4,10 +4,10 @@
 
 
         <div class="row px-4">
-            <div class="col-sm-8">
+            <div class="col-12">
 
                 <div id="amazingslider-wrapper-1"
-                     style="display:block;position:relative;max-width:1300px;margin:50px auto 44px;">
+                     style="display:block;position:relative;max-width:100%;margin-bottom: 20px">
                     <div id="amazingslider-1" style="display:none;position:relative;margin:0 auto;">
                         <ul class="amazingslider-slides" style="display:none;">
                             @foreach($sliBars as $slibar)
@@ -30,17 +30,6 @@
                     </div>
                 </div>
 
-            </div>
-            <div class="col-sm-4 mt-5">
-                <h1 class="text-center my-2"><span class="badge badge-info"> <i
-                                class="icon-checkmark advantages__icon"></i> ضمانت محصولات </span></h1>
-                <h1 class="text-center my-5"><span class="badge badge-secondary"><i
-                                class="icon-grip-horizontal-solid advantages__icon"></i> فروش عمده</span> <span
-                            class="badge badge-secondary"></span></h1>
-                <h1 class="text-center my-5"><span class="badge badge-info"> <i
-                                class="icon-dollar advantages__icon"></i> قیمت مناسب </span></h1>
-                <h1 class="text-center my-2"><span class="badge badge-secondary"> <i
-                                class="icon-credit-card-alt advantages__icon"></i> پرداخت در محل</span></h1>
             </div>
         </div>
         <hr>
