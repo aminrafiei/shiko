@@ -88,10 +88,10 @@
                 </a>
             </li>
             <li class="nav-item main-nav__item">
-                <a class="nav-link main-nav__link" href="#">{{__('messages.contact_us')}}</a>
+                <a class="nav-link main-nav__link" href="{{route('contact.us')}}">{{__('messages.contact_us')}}</a>
             </li>
             <li class="nav-item main-nav__item">
-                <a class="nav-link main-nav__link" href="#">{{__('messages.about_us')}}</a>
+                <a class="nav-link main-nav__link" href="{{route('about.us')}}">{{__('messages.about_us')}}</a>
             </li>
         </ul>
         <div class="col-12 col-lg-8 search-form-position">

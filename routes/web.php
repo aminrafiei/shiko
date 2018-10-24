@@ -92,7 +92,8 @@ Route::group(['prefix' => 'profile'], function () {
 
 Route::get('/about_us',function(){
     return view('layouts/about_us');
-});
+})->name('about.us');
+
 Route::get('/contact_us',function(){
     return view('layouts/contact_us');
-});
+})->name('contact.us');

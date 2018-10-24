@@ -26,12 +26,14 @@
                         @foreach($cart->items as $item)
                             <tr>
                                 <td>
-                                    <img class="product-image" src="{{asset('images/'.$item['item']->image)}}" style="width: 125px;height: 100px">
+                                    <img class="product-image" src="{{asset('images/'.$item['item']->image)}}"
+                                         style="width: 125px;height: 100px">
                                 </td>
                                 <td>
                                     <p><a href={{route('show.products.details',['id' => $item['item']->id])}}>
                                             {{$item['item']->title}}</a></p>
-                                    <small>رنگ:{{$item['item']->color->color}}</small><br>
+                                    <small>رنگ:{{$item['item']->color->color}}</small>
+                                    <br>
                                     <small>سایز: {{$item['item']->size->where('id',$item['size'])->first()->pants_size}}
                                         {{$item['item']->size->where('id',$item['size'])->first()->cloth_size}}</small>
                                 </td>
@@ -54,7 +56,8 @@
                         <form class="container-fluid" action="#">
                             <p class="">کد تخفیف یا کد هدیه خود را وارد کنید</p>
                             <input class="form-control" type="text" name="discount">
-                            <input disabled class="btn btn-outline-danger form-control my-2" type="submit" value="تایید">
+                            <input disabled class="btn btn-outline-danger form-control my-2" type="submit"
+                                   value="تایید">
                         </form>
                     </div>
                 </div>
@@ -102,7 +105,9 @@
                 </div>
             </div>
         @else
-            <h3 class="text-center my-5">سبد خرید شما خالی است</h3>
+            <div style="height: 22vh">
+                <h3 class="text-center my-5">سبد خرید شما خالی است</h3>
+            </div>
         @endif
 
     </div>
