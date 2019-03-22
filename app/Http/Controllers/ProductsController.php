@@ -3,40 +3,54 @@
 
 namespace App\Http\Controllers;
 
-use App\Cart;
 use App\Category;
 use App\Color;
-use App\Comment;
 use App\Http\Requests\ProductsValidator;
-use App\Picture;
+use App\Http\Service\ProductService;
 use App\Poster;
 use App\Product;
 use App\Size;
-use App\Slidebar;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Facades\Image;
 
+/**
+ * Class ProductsController
+ * @package App\Http\Controllers
+ */
 class ProductsController extends Controller
 {
+    /**
+     * @var ProductService
+     */
+    protected $service;
 
-    public function __construct()
+    /**
+     * ProductsController constructor.
+     * @param ProductService $productService
+     */
+    public function __construct(ProductService $productService)
     {
+        $this->service = $productService;
         $this->middleware('auth:admin')->except(['showProductsDetails']);
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function showStoreDetails($id)
     {
         $product = Product::with(['color', 'size'])->find($id);
+
         return view('admin.dashboard.store_details', compact('product'));
     }
 
-
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function storeUpdate(Request $request, $id)
     {
-
         $this->validate($request, [
             "size.*" => 'required|numeric',
         ]);
@@ -58,79 +72,71 @@ class ProductsController extends Controller
     }
 
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function showStore()
     {
         $products = Product::all();
+
         return view('admin.dashboard.store', compact('products'));
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function showProductsDetails($id)
     {
-        $product = Product::with(['size', 'color'])->findOrFail($id);//->with(['comment','picture']);
+        $product = Product::with(['size', 'color'])->findOrFail($id);
+
         return view('layouts.product', compact('product'));
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function adminShowProduct()
     {
         $products = Product::paginate(10);
+
         return view('admin.dashboard.products', compact('products'));
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function adminShowProductID($id)
     {
         $categories = Category::all();
         $sizes = Size::all();
         $colors = Color::all();
         $product = Product::with(['category', 'picture'])->findOrFail($id);
+
         return view('admin.dashboard.update_product', compact('product', 'categories', 'sizes', 'colors'));
-        //return view('admin.dashboard.product_details', compact('product'));
     }
 
 
+    /**
+     * @param ProductsValidator $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function productUpdate(ProductsValidator $request, $id)
     {
+        $request->validated();
 
-        $validated = $request->validated();
-        $product = Product::find($id);
-        $product->update($request->only('title', 'price', 'tag', 'description', 'color_id'));
-        $product->color_id = $request->color_id;
-        $product->save();
+        $this->service->update($request, $id);
 
-        if ($request->hasFile('image')) {
-            $img = $request->file('image');
-            $filename = time() . "." . $img->getClientOriginalExtension();
-            $location = public_path("images/" . $filename);
-            Image::make($img)->save($location);
-            $product->image = $filename;
-            $product->save();
-        }
-        if ($request->hasFile('images')) {
-
-            $pic = Picture::where('product_id', $product->id)->get();
-
-            foreach ($request->images as $image) {
-
-                global $i;
-                $filename = (time() + $i) . "." . $image->getClientOriginalExtension();
-                $location = public_path("images/" . $filename);
-                Image::make($image)->save($location);
-                if ($i == null)
-                    $i = 0;
-                $pp = Picture::find($pic[$i]->id);
-                $pp->update([
-                    'product_id' => $product->id,
-                    'picture' => $filename
-                ]);
-                $i++;
-            }
-        }
-
-        $product->size()->sync($request->get('size_id'));
-        $product->category()->sync($request->get('category_id'));
         return redirect()->route('admin.dashboard')->with('status', 'successfully updated!');
 
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function removeProduct(Request $request)
     {
         $ids = $request->checkbox;
@@ -140,58 +146,28 @@ class ProductsController extends Controller
         return back();
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function addProduct()
     {
         $categories = Category::all();
         $sizes = Size::all();
         $colors = Color::all();
-        //dd($categories->toArray());
+
         return view('admin.dashboard.add_product', compact('categories', 'sizes', 'colors'));
     }
 
+    /**
+     * @param ProductsValidator $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function addProductSubmit(ProductsValidator $request)
     {
-        //not really hard code =D
+        $request->validated();
 
-        $validated = $request->validated();
-//        dd($request->toArray());
-        //$product = new Product;
-        $product = Product::create(['price' => 1,'admin_id'=>1]);
-//        $product->admin_id = Auth::user()->id;
-//        $product->title = $request->title;
-//        $product->description = $request->description;
-//        $product->price = $request->price;
-//        $product->tag = $request->tag;
-//        $product->color_id = $request->color_id;
+        $this->service->store($request);
 
-
-        if ($request->hasFile('image')) {
-
-            $img = $request->file('image');
-            $filename = time() . "." . $img->getClientOriginalExtension();
-            $location = public_path("images/" . $filename);
-            Image::make($img)->save($location);
-            $product->image = $filename;
-        }
-
-        $product->save();
-        sleep(1);
-        if ($request->hasFile('images')) {
-            foreach ($request->images as $image) {
-                global $i;
-                $filename = (time() + $i) . "." . $image->getClientOriginalExtension();
-                $location = public_path("images/" . $filename);
-                Image::make($image)->save($location);
-                $i++;
-
-                Picture::create(['product_id' => $product->id, 'picture' => $filename]);
-            }
-        }
-
-        $product->size()->attach($request->get('size_id'));
-        $product->category()->attach($request->get('category_id'));
         return redirect()->route('admin.dashboard')->with('status', 'successfully created!');
     }
-
-
 }

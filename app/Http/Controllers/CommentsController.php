@@ -4,47 +4,68 @@ namespace App\Http\Controllers;
 
 use App\Comment;
 use App\Http\Requests\CommentsValidator;
+use App\Http\Service\CommentService;
 use App\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
+/**
+ * Class CommentsController
+ * @package App\Http\Controllers
+ */
 class CommentsController extends Controller
 {
+    protected $service;
 
-    public function __construct()
+    /**
+     * CommentsController constructor.
+     * @param CommentService $commentService
+     */
+    public function __construct(CommentService $commentService)
     {
+        $this->service = $commentService;
         $this->middleware('auth:admin')->except('newComment');
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function showComments()
     {
         $comments = Comment::all();
+
         return view('admin.dashboard.comments', compact('comments'));
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function showCommentDetail($id)
     {
-        $product = Product::find($id);//->with(['comment']);
+        $product = Product::with(['comment'])->find($id);
 
         return view('admin.dashboard.comment_details', compact('product'));
     }
 
+    /**
+     * @param CommentsValidator $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function newComment(CommentsValidator $request, $id)
     {
-        $validated = $request->validated();
+        $request->validated();
 
-        $product = Product::find($id);
+        $this->service->store($request, $id);
 
-        $com = new Comment();
-        $com->title = $request->title;
-        $com->description = $request->description;
-        $com->user_id = Auth::user()->id;
-
-        $product->comment()->save($com);
         return redirect()->back()->with('status', __('messages.new_comment'));
 
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function publishCommentProduct(Request $request)
     {
         if ($id = $request->publish) {
@@ -57,15 +78,14 @@ class CommentsController extends Controller
             Comment::where('id', $id)->update(['isShow' => 0]);
             return redirect()->back()->with('status', 'successfully changed!!');
         }
+
         return redirect()->back()->with('warning', 'something wrong !!');
     }
 
-    public function deleteComment(Request $request)
-    {
-        $id = $request->delete;
-
-    }
-
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function publishComment(Request $request)
     {
         $id = $request->checkbox;
@@ -73,6 +93,7 @@ class CommentsController extends Controller
             $comment = Comment::find($value);
             $comment->update(['isShow' => 1]);
         }
+
         return redirect()->back()->with('status', 'successfully changed!');
     }
 }

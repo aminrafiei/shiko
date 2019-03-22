@@ -4,7 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Slidebar
+ * @package App
+ */
 class Slidebar extends Model
 {
-	protected $fillable = ['product_id'];
+    /**
+     * @var array
+     */
+    protected $fillable = ['product_id'];
 }

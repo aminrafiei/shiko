@@ -4,16 +4,17 @@ namespace App\Http\Controllers;
 
 
 use App\Category;
-use App\Post;
 use App\Product;
 use App\Slidebar;
 use Illuminate\Http\Request;
 
 
+/**
+ * Class PagesController
+ * @package App\Http\Controllers
+ */
 class PagesController extends Controller
 {
-    //testing controller !!!
-    //maybe changed after while!!
     /**
      * Display a listing of the resource.
      *
@@ -27,11 +28,10 @@ class PagesController extends Controller
         return view('main.index', compact('products', 'sliBars'));
     }
 
-    public function sort()
-    {
-        
-    }
-
+    /**
+     * @param $name
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function searchCat($name)
     {
         $category = Category::all();
@@ -45,6 +45,10 @@ class PagesController extends Controller
     }
 
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function search(Request $request)
     {
         $category = Category::all();
@@ -63,5 +67,4 @@ class PagesController extends Controller
         }
 
     }
-
 }

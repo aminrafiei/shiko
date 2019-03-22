@@ -5,14 +5,30 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Psy\Util\Str;
 
+/**
+ * Class Cart
+ * @package App
+ */
 class Cart extends Model
 {
-
+    /**
+     * @var null
+     */
     public $items = null;
+    /**
+     * @var int
+     */
     public $totalQuantity = 0;
+    /**
+     * @var int
+     */
     public $totalPrice = 0;
 
-    public function __construct($oldCart)
+    /**
+     * Cart constructor.
+     * @param $oldCart
+     */
+    public function __construct($oldCart = '')
     {
         if ($oldCart) {
             $this->items = $oldCart->items;
@@ -21,6 +37,19 @@ class Cart extends Model
         }
     }
 
+    /**
+     * @param string $oldCart
+     * @return Cart
+     */
+    public static function makeInstance($oldCart = '')
+    {
+        return new self($oldCart);
+    }
+
+    /**
+     * @param $item
+     * @param $size
+     */
     public function add($item, $size)
     {
 
@@ -43,6 +72,11 @@ class Cart extends Model
 
     }
 
+    /**
+     * @param $oldCart
+     * @param $id
+     * @return mixed
+     */
     public static function deleteItem($oldCart, $id)
     {
         $item = $oldCart->items[$id];
@@ -55,7 +89,12 @@ class Cart extends Model
 
     }
 
-    //must be changed
+    /**
+     * @param $oldCart
+     * @param $id
+     * @param $action
+     * @return mixed
+     */
     public static function changeQty($oldCart, $id, $action)
     {
         $newCart = $oldCart;
@@ -74,7 +113,7 @@ class Cart extends Model
             $newCart->items[$id]['price'] = $newCart->items[$id]['qty'] * $item->price;
             $newCart->totalPrice -= $item['price'];
         }
+
         return $newCart;
     }
-
 }
